@@ -50,7 +50,7 @@ class FastConnectOptions {
 
 /// Options for SDK-owned network requests.
 ///
-/// These options apply to LiveKit signaling and internal HTTPS requests made
+/// These options apply to WibeChat signaling and internal HTTPS requests made
 /// by the SDK. They do not apply to WebRTC media, TURN, or user-provided token
 /// endpoints.
 class NetworkOptions {
@@ -248,7 +248,7 @@ class RoomOptions {
 
   final AudioOutputOptions defaultAudioOutputOptions;
 
-  /// AdaptiveStream lets LiveKit automatically manage quality of subscribed
+  /// AdaptiveStream lets WibeChat automatically manage quality of subscribed
   /// video tracks to optimize for bandwidth and CPU.
   /// When attached video elements are visible, it'll choose an appropriate
   /// resolution based on the size of largest video element it's attached to.

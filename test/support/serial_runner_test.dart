@@ -19,7 +19,7 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/support/serial_runner.dart';
+import 'package:wibechat_client/src/support/serial_runner.dart';
 
 void main() {
   group('SerialRunner', () {

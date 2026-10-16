@@ -39,7 +39,7 @@ class RoomAgentDispatch {
   Map<String, dynamic> toJson() => _$RoomAgentDispatchToJson(this);
 }
 
-/// Configuration for a LiveKit room.
+/// Configuration for a WibeChat room.
 ///
 /// This class contains various settings that control room behavior such as timeouts,
 /// participant limits, and agent dispatching.

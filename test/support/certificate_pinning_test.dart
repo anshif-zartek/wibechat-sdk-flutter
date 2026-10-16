@@ -17,9 +17,9 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/exceptions.dart';
-import 'package:livekit_client/src/options.dart';
-import 'package:livekit_client/src/support/certificate_pinning.dart';
+import 'package:wibechat_client/src/exceptions.dart';
+import 'package:wibechat_client/src/options.dart';
+import 'package:wibechat_client/src/support/certificate_pinning.dart';
 
 void main() {
   test('computes SHA-256 SPKI certificate pins', () {
@@ -103,7 +103,7 @@ void main() {
             primaryPins: [certificateSpkiSha256Pin(certificate)],
           ),
           CertificatePinningRule(
-            hosts: const ['livekit.example.com'],
+            hosts: const ['wibechat.example.com'],
             backupPins: [certificateSpkiSha256Pin(backupCertificate)],
           ),
         ],
@@ -112,14 +112,14 @@ void main() {
 
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: backupCertificate,
       ),
       returnsNormally,
     );
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: otherCertificate,
       ),
       throwsA(isA<CertificatePinningException>()),
@@ -133,7 +133,7 @@ void main() {
       CertificatePinningOptions(
         rules: [
           CertificatePinningRule(
-            hosts: const ['livekit.example.com'],
+            hosts: const ['wibechat.example.com'],
             pinnedLeafCertificates: [CertificateBytes.der(certificate)],
           ),
           CertificatePinningRule(
@@ -147,7 +147,7 @@ void main() {
     // passes the exact leaf check but fails the SPKI check
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: certificate,
       ),
       throwsA(isA<CertificatePinningException>()),
@@ -155,7 +155,7 @@ void main() {
     // passes the SPKI check but fails the exact leaf check
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: otherCertificate,
       ),
       throwsA(isA<CertificatePinningException>()),
@@ -168,7 +168,7 @@ void main() {
       CertificatePinningOptions(
         rules: [
           CertificatePinningRule(
-            hosts: const ['livekit.example.com'],
+            hosts: const ['wibechat.example.com'],
             pinnedLeafCertificates: [CertificateBytes.der(certificate)],
           ),
           CertificatePinningRule(
@@ -181,7 +181,7 @@ void main() {
 
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: certificate,
       ),
       returnsNormally,
@@ -195,7 +195,7 @@ void main() {
       CertificatePinningOptions(
         rules: [
           CertificatePinningRule(
-            hosts: const ['livekit.example.com'],
+            hosts: const ['wibechat.example.com'],
             primaryPins: [certificateSpkiSha256Pin(certificate)],
           ),
         ],
@@ -204,7 +204,7 @@ void main() {
 
     expect(
       () => validator.validatePeerCertificate(
-        uri: Uri.parse('https://livekit.example.com'),
+        uri: Uri.parse('https://wibechat.example.com'),
         certificateDer: otherCertificate,
       ),
       throwsA(isA<CertificatePinningException>()),
@@ -217,7 +217,7 @@ void main() {
       const CertificatePinningOptions(
         rules: [
           CertificatePinningRule(
-            hosts: ['livekit.example.com'],
+            hosts: ['wibechat.example.com'],
             primaryPins: ['sha256/not-a-real-pin'],
           ),
         ],

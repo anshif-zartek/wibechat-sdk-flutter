@@ -29,30 +29,30 @@ import 'types/participant_permissions.dart';
 import 'types/participant_state.dart' show ParticipantState;
 import 'types/transcription_segment.dart';
 
-/// Base type for all LiveKit events.
-mixin LiveKitEvent {
+/// Base type for all WibeChat events.
+mixin WibeChatEvent {
   /// Every event must provide a useful textual representation for logging.
   @override
   String toString();
 }
 
 /// Base type for all [Room] events.
-mixin RoomEvent implements LiveKitEvent {}
+mixin RoomEvent implements WibeChatEvent {}
 
 /// Base type for all [Participant] events.
-mixin ParticipantEvent implements LiveKitEvent {}
+mixin ParticipantEvent implements WibeChatEvent {}
 
 /// Base type for all [Track] events.
-mixin TrackEvent implements LiveKitEvent {}
+mixin TrackEvent implements WibeChatEvent {}
 
 /// Base type for all [Engine] events.
-mixin EngineEvent implements LiveKitEvent {}
+mixin EngineEvent implements WibeChatEvent {}
 
 /// Base type for all [SignalClient] events.
-mixin SignalEvent implements LiveKitEvent {}
+mixin SignalEvent implements WibeChatEvent {}
 
 /// Base type for internal-only events.
-mixin InternalEvent implements LiveKitEvent {}
+mixin InternalEvent implements WibeChatEvent {}
 
 class RoomConnectedEvent with RoomEvent {
   final Room room;
@@ -444,7 +444,7 @@ class ParticipantConnectionQualityUpdatedEvent with RoomEvent, ParticipantEvent 
 }
 
 /// Data received from  [RemoteParticipant].
-/// Data packets provides the ability to use LiveKit to send/receive arbitrary
+/// Data packets provides the ability to use WibeChat to send/receive arbitrary
 /// payloads.
 /// Emitted by [Room] and [RemoteParticipant].
 class DataReceivedEvent with RoomEvent, ParticipantEvent {

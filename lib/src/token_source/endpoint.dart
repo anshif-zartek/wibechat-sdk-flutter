@@ -51,7 +51,7 @@ class TokenSourceHttpException implements Exception {
 /// - Validates HTTP status codes (200-299) and throws appropriate errors for failures
 class EndpointTokenSource implements TokenSourceConfigurable {
   /// The URL endpoint for token generation.
-  /// This should point to your backend service that generates LiveKit tokens.
+  /// This should point to your backend service that generates WibeChat tokens.
   final Uri uri;
 
   /// The HTTP method to use for the token request (defaults to "POST").

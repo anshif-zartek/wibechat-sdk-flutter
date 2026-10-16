@@ -14,7 +14,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/utils/ttl_map.dart';
+import 'package:wibechat_client/src/utils/ttl_map.dart';
 
 void main() {
   group('TTLMap', () {

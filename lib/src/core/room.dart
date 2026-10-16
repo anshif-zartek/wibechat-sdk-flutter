@@ -58,7 +58,7 @@ import 'engine.dart';
 import 'participant_collection.dart';
 import 'pending_track_queue.dart';
 
-/// Room is the primary construct for LiveKit conferences. It contains a
+/// Room is the primary construct for WibeChat conferences. It contains a
 /// group of [Participant]s, each publishing and subscribing to [Track]s.
 /// Notifies changes to its state via two ways, by assigning a delegate, or using
 /// it as a provider.
@@ -288,7 +288,7 @@ class Room extends DisposableChangeNotifier with EventsEmittable<RoomEvent> {
     if ((effectiveRoomOptions.encryption != null || effectiveRoomOptions.e2eeOptions != null) &&
         engine.e2eeManager == null) {
       if (!lkPlatformSupportsE2EE()) {
-        throw LiveKitE2EEException('E2EE is not supported on this platform');
+        throw WibeChatE2EEException('E2EE is not supported on this platform');
       }
       // ignore: deprecated_member_use_from_same_package
       final e2eeOptions = effectiveRoomOptions.encryption ?? effectiveRoomOptions.e2eeOptions;
@@ -778,7 +778,7 @@ class Room extends DisposableChangeNotifier with EventsEmittable<RoomEvent> {
     if (_e2eeManager != null) {
       await _e2eeManager!.setEnabled(enabled);
     } else {
-      throw LiveKitE2EEException('_e2eeManager not setup!');
+      throw WibeChatE2EEException('_e2eeManager not setup!');
     }
   }
 

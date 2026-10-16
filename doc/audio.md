@@ -1,18 +1,18 @@
 # Audio session management
 
-LiveKit owns the platform audio session on iOS and Android through a single process-wide entry point, `AudioManager`. By default it manages a communication session for you, choosing the right native category, mode, focus, and routing. When you need more control you switch to manual mode and apply typed options yourself. On macOS, `AudioManager` reports native audio-engine state but does not configure a platform audio session.
+WibeChat owns the platform audio session on iOS and Android through a single process-wide entry point, `AudioManager`. By default it manages a communication session for you, choosing the right native category, mode, focus, and routing. When you need more control you switch to manual mode and apply typed options yourself. On macOS, `AudioManager` reports native audio-engine state but does not configure a platform audio session.
 
 `AudioManager` is a singleton, reached through `AudioManager.instance`. It is also where you read back the engine-wide audio processing state, so one object covers both the audio session and the signal processing applied to your audio.
 
 ## Defaults if you do nothing
 
-With no configuration, LiveKit manages the session automatically with the `communication` intent, which is meant for calls. A call needs no setup. On iOS this resolves to a `playAndRecord` session while the microphone is active and a `playback` session for listen only playout. On Android it resolves to communication mode with voice call routing and audio focus.
+With no configuration, WibeChat manages the session automatically with the `communication` intent, which is meant for calls. A call needs no setup. On iOS this resolves to a `playAndRecord` session while the microphone is active and a `playback` session for listen only playout. On Android it resolves to communication mode with voice call routing and audio focus.
 
-LiveKit disables flutter_webrtc's own native audio management automatically when the plugin loads, so it owns the session without any setup from you.
+WibeChat disables flutter_webrtc's own native audio management automatically when the plugin loads, so it owns the session without any setup from you.
 
 Speaker output is preferred by default, but a wired or Bluetooth headset still wins over the speaker. Forced speaker output is off, so the speaker is never forced over a connected headset unless you ask for it.
 
-The media playback preset (`AudioSessionOptions.mediaPlayback()`) is for playback-first experiences such as viewer-only live streams. On Android, pass it to `LiveKitClient.initialize` before WebRTC initializes when you need the WebRTC audio device module to use media mode and media volume. This also seeds LiveKit's automatic runtime session policy until you explicitly replace it with `AudioManager.instance.setAudioSessionOptions(...)`. Runtime session updates apply LiveKit's platform session policy, but WebRTC playout `AudioAttributes` are currently initialized when the audio device module is created.
+The media playback preset (`AudioSessionOptions.mediaPlayback()`) is for playback-first experiences such as viewer-only live streams. On Android, pass it to `WibeChatClient.initialize` before WebRTC initializes when you need the WebRTC audio device module to use media mode and media volume. This also seeds WibeChat's automatic runtime session policy until you explicitly replace it with `AudioManager.instance.setAudioSessionOptions(...)`. Runtime session updates apply WibeChat's platform session policy, but WebRTC playout `AudioAttributes` are currently initialized when the audio device module is created.
 
 The default audio capture options apply standard voice processing, so echo cancellation, noise suppression, and auto gain control are on and the high pass filter is off. You can change this per track with `AudioProcessingOptions`.
 
@@ -20,12 +20,12 @@ On macOS the audio engine state is reported but no `AVAudioSession` is configure
 
 ## Quick start
 
-For a call you do not need to configure anything. LiveKit manages a communication session automatically.
+For a call you do not need to configure anything. WibeChat manages a communication session automatically.
 
-To take control of the session yourself, apply options. This switches `AudioManager` to manual mode, where your app owns the session and LiveKit stops managing it from room and engine lifecycle.
+To take control of the session yourself, apply options. This switches `AudioManager` to manual mode, where your app owns the session and WibeChat stops managing it from room and engine lifecycle.
 
 ```dart
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 // Take manual control and apply a media playback session.
 await AudioManager.instance.setAudioSessionOptions(
@@ -33,15 +33,15 @@ await AudioManager.instance.setAudioSessionOptions(
 );
 ```
 
-On Android, media output type has one WebRTC initialization-time piece and one LiveKit runtime-session piece. For playback-first apps, initialize WebRTC with the media intent before connecting:
+On Android, media output type has one WebRTC initialization-time piece and one WibeChat runtime-session piece. For playback-first apps, initialize WebRTC with the media intent before connecting:
 
 ```dart
-await LiveKitClient.initialize(
+await WibeChatClient.initialize(
   initialAudioSessionOptions: const AudioSessionOptions.mediaPlayback(),
 );
 ```
 
-This seeds both WebRTC's initialization-time playout attributes and LiveKit's automatic runtime session policy. See the next section for the full rule. Apply options before connecting when you can.
+This seeds both WebRTC's initialization-time playout attributes and WibeChat's automatic runtime session policy. See the next section for the full rule. Apply options before connecting when you can.
 
 ## Configuration timing
 
@@ -49,10 +49,10 @@ This seeds both WebRTC's initialization-time playout attributes and LiveKit's au
 
 | API | Timing | What it can update |
 | --- | --- | --- |
-| `LiveKitClient.initialize(initialAudioSessionOptions: ...)` | Before WebRTC initializes. | WebRTC audio device module playout `AudioAttributes`, and LiveKit's initial automatic runtime session policy. Today WebRTC uses the Android `usageType` and `contentType` fields, for example `USAGE_MEDIA` and `CONTENT_TYPE_UNKNOWN` from `AudioSessionOptions.mediaPlayback()`. |
-| `AudioManager.instance.setAudioSessionOptions(...)` | Runtime. | Explicitly replaces the stored session options, switches to manual management, and applies LiveKit's platform session policy: Android audio mode, audio focus mode, stream type, focus ownership, routing handler policy, and iOS category/options/mode. |
+| `WibeChatClient.initialize(initialAudioSessionOptions: ...)` | Before WebRTC initializes. | WebRTC audio device module playout `AudioAttributes`, and WibeChat's initial automatic runtime session policy. Today WebRTC uses the Android `usageType` and `contentType` fields, for example `USAGE_MEDIA` and `CONTENT_TYPE_UNKNOWN` from `AudioSessionOptions.mediaPlayback()`. |
+| `AudioManager.instance.setAudioSessionOptions(...)` | Runtime. | Explicitly replaces the stored session options, switches to manual management, and applies WibeChat's platform session policy: Android audio mode, audio focus mode, stream type, focus ownership, routing handler policy, and iOS category/options/mode. |
 
-Most fields in `AudioSessionOptions` are runtime session policy and can be applied again with `AudioManager.instance.setAudioSessionOptions(...)`. The exception is Android WebRTC playout attributes: changing `AndroidAudioSessionConfiguration.usageType` or `contentType` at runtime updates LiveKit's session/focus handler, but it does not change the `AudioAttributes` of an already-created WebRTC audio device module. Pass those options to `LiveKitClient.initialize(...)` before WebRTC initializes when they must affect playout volume/routing. You do not need to call `setAudioSessionOptions(...)` with the same options just to make LiveKit use them during automatic session management.
+Most fields in `AudioSessionOptions` are runtime session policy and can be applied again with `AudioManager.instance.setAudioSessionOptions(...)`. The exception is Android WebRTC playout attributes: changing `AndroidAudioSessionConfiguration.usageType` or `contentType` at runtime updates WibeChat's session/focus handler, but it does not change the `AudioAttributes` of an already-created WebRTC audio device module. Pass those options to `WibeChatClient.initialize(...)` before WebRTC initializes when they must affect playout volume/routing. You do not need to call `setAudioSessionOptions(...)` with the same options just to make WibeChat use them during automatic session management.
 
 We plan to make Android WebRTC playout attributes runtime-updatable in a future SDK/WebRTC integration if the native layer can safely update the stored attributes and recreate playout with acceptable behavior. Until then, treat WebRTC playout `AudioAttributes` as initialization-time configuration.
 
@@ -60,9 +60,9 @@ We plan to make Android WebRTC playout attributes runtime-updatable in a future 
 
 The two modes differ in who owns the session lifecycle.
 
-In automatic mode (the default) LiveKit manages the session from room, connect, and engine lifecycle. On iOS it derives the active category/mode from the current audio engine state. On Android it uses the current session intent, defaulting to communication and optionally seeded by `LiveKitClient.initialize(initialAudioSessionOptions: ...)`.
+In automatic mode (the default) WibeChat manages the session from room, connect, and engine lifecycle. On iOS it derives the active category/mode from the current audio engine state. On Android it uses the current session intent, defaulting to communication and optionally seeded by `WibeChatClient.initialize(initialAudioSessionOptions: ...)`.
 
-In manual mode LiveKit does not touch the session on its own, and your app owns it. Enter manual mode when you need to apply a fixed platform configuration or deactivate the session yourself.
+In manual mode WibeChat does not touch the session on its own, and your app owns it. Enter manual mode when you need to apply a fixed platform configuration or deactivate the session yourself.
 
 ```dart
 // Apply a fixed config. This enters manual mode.
@@ -70,7 +70,7 @@ await AudioManager.instance.setAudioSessionOptions(
   const AudioSessionOptions.mediaPlayback(),
 );
 
-// Later, hand control back to LiveKit.
+// Later, hand control back to WibeChat.
 await AudioManager.instance.setAudioSessionManagementMode(
   AudioSessionManagementMode.automatic,
 );
@@ -84,7 +84,7 @@ await AudioManager.instance.setAudioSessionManagementMode(
 );
 ```
 
-To release the active session, call `deactivateAudioSession`. It also enters manual mode if needed, so LiveKit does not immediately reactivate the session from engine lifecycle.
+To release the active session, call `deactivateAudioSession`. It also enters manual mode if needed, so WibeChat does not immediately reactivate the session from engine lifecycle.
 
 ```dart
 // Release the active session when your manual lifecycle no longer needs it.
@@ -107,11 +107,11 @@ await AudioManager.instance.setSpeakerOutputPreferred(true, force: true);
 await AudioManager.instance.setSpeakerOutputPreferred(false);
 ```
 
-Speaker routing is independent of the management mode and does not switch it. In Android communication/call sessions and in iOS automatic mode, LiveKit applies the preference through its managed route policy. In iOS manual mode, the fixed Apple config you apply owns non-forced receiver vs speaker behavior. `force: true` still uses Apple's speaker override when the active category is `playAndRecord`. Read the current preference through `AudioManager.instance.isSpeakerOutputPreferred` and `AudioManager.instance.isSpeakerOutputForced`. `AudioManager.instance.canSwitchSpeakerphone` is true on iOS and Android.
+Speaker routing is independent of the management mode and does not switch it. In Android communication/call sessions and in iOS automatic mode, WibeChat applies the preference through its managed route policy. In iOS manual mode, the fixed Apple config you apply owns non-forced receiver vs speaker behavior. `force: true` still uses Apple's speaker override when the active category is `playAndRecord`. Read the current preference through `AudioManager.instance.isSpeakerOutputPreferred` and `AudioManager.instance.isSpeakerOutputForced`. `AudioManager.instance.canSwitchSpeakerphone` is true on iOS and Android.
 
-On Android, LiveKit speaker routing is a communication/call routing policy. Media sessions use Android's normal media routing. Pass `AudioSessionOptions.mediaPlayback()` to `LiveKitClient.initialize` before WebRTC initializes when the WebRTC audio device module should use media attributes.
+On Android, WibeChat speaker routing is a communication/call routing policy. Media sessions use Android's normal media routing. Pass `AudioSessionOptions.mediaPlayback()` to `WibeChatClient.initialize` before WebRTC initializes when the WebRTC audio device module should use media attributes.
 
-`Room.setSpeakerOn(...)` is deprecated and forwards to `AudioManager.instance.setSpeakerOutputPreferred`. You can also set an initial preference through `RoomOptions` (`defaultAudioOutputOptions.speakerOn`) before connecting, which LiveKit applies when the session starts.
+`Room.setSpeakerOn(...)` is deprecated and forwards to `AudioManager.instance.setSpeakerOutputPreferred`. You can also set an initial preference through `RoomOptions` (`defaultAudioOutputOptions.speakerOn`) before connecting, which WibeChat applies when the session starts.
 
 ## Observing audio engine state
 
@@ -139,7 +139,7 @@ The session intent decides how the platform treats audio. Capture options decide
 - Use `AudioProcessingOptions.communication()` when you want all four voice filters on for an existing local audio track.
 - Use `AudioProcessingOptions.noProcessing()` for local capture where you want minimal processing, such as high quality recording or app-managed audio effects.
 
-Create-time processing is configured through `AudioCaptureOptions`. `LocalAudioTrack.create(...)` stores these options, and LiveKit prepares them when local recording starts, such as during publish or preconnect. If the exposed native platform API reports that capture-time setup failed, the start path throws before publish creates a server-side publication: `TrackCreateException` when microphone permission is missing, `AudioSessionException` when the audio session cannot be configured for or does not permit recording, and `AudioProcessingException` for other capture-time setup failures.
+Create-time processing is configured through `AudioCaptureOptions`. `LocalAudioTrack.create(...)` stores these options, and WibeChat prepares them when local recording starts, such as during publish or preconnect. If the exposed native platform API reports that capture-time setup failed, the start path throws before publish creates a server-side publication: `TrackCreateException` when microphone permission is missing, `AudioSessionException` when the audio session cannot be configured for or does not permit recording, and `AudioProcessingException` for other capture-time setup failures.
 
 ```dart
 final track = await LocalAudioTrack.create(
@@ -221,10 +221,10 @@ Create a new `AudioSessionOptions.communication()` or `AudioSessionOptions.media
 | --- | --- | --- | --- |
 | iOS | Automatic mode follows live engine state. Manual mode applies your Apple config verbatim. | Yes. Normal preference respects wired and Bluetooth devices. Forced speaker uses Apple's speaker override while the active category is `playAndRecord`. | Yes, from native WebRTC engine events. |
 | macOS | Not configured. There is no `AVAudioSession`. | No. `canSwitchSpeakerphone` is false. | Yes, the same engine events are reported. |
-| Android | Automatic mode uses the current session intent, seeded by `LiveKitClient.initialize(initialAudioSessionOptions: ...)` and defaulting to communication. Pass media options before WebRTC initializes when the WebRTC audio device module should use media mode/volume. | Yes for communication/call routing. Media playback follows Android media routing. | Not reported, the Dart state stays idle. |
+| Android | Automatic mode uses the current session intent, seeded by `WibeChatClient.initialize(initialAudioSessionOptions: ...)` and defaulting to communication. Pass media options before WebRTC initializes when the WebRTC audio device module should use media mode/volume. | Yes for communication/call routing. Media playback follows Android media routing. | Not reported, the Dart state stays idle. |
 | Web, Windows, Linux | Not configured. | No. `canSwitchSpeakerphone` is false. | Not reported. |
 
-On iOS automatic mode, listen only playout uses `playback`. When recording starts, LiveKit reapplies the session as `playAndRecord`. In manual mode, non-forced receiver vs speaker behavior comes from the Apple config you applied.
+On iOS automatic mode, listen only playout uses `playback`. When recording starts, WibeChat reapplies the session as `playAndRecord`. In manual mode, non-forced receiver vs speaker behavior comes from the Apple config you applied.
 
 Dart track counting no longer drives the session. The native audio engine delegate drives it from real lifecycle events, which removes the timing races and missed deactivations of the older counting approach.
 
@@ -258,4 +258,4 @@ await AudioManager.instance.setAudioSessionOptions(
 
 ## API reference
 
-The full generated API reference for these types lives at [pub.dev](https://pub.dev/documentation/livekit_client/latest/). Start from `AudioManager`, `AudioSessionOptions`, `AppleAudioSessionConfiguration`, `AndroidAudioSessionConfiguration`, and `AudioProcessingOptions`.
+The full generated API reference for these types lives at [pub.dev](https://pub.dev/documentation/wibechat_client/latest/). Start from `AudioManager`, `AudioSessionOptions`, `AppleAudioSessionConfiguration`, `AndroidAudioSessionConfiguration`, and `AudioProcessingOptions`.

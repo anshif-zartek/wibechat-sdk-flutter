@@ -29,7 +29,7 @@ class Native {
   static final channel = _createChannel();
 
   static MethodChannel _createChannel() {
-    final channel = MethodChannel('livekit_client');
+    final channel = MethodChannel('wibechat_client');
     channel.setMethodCallHandler(_handleMethodCall);
     return channel;
   }
@@ -174,7 +174,7 @@ class Native {
     return null;
   }
 
-  /// Configure and activate LiveKit's Android audio session (mode/focus/routing).
+  /// Configure and activate WibeChat's Android audio session (mode/focus/routing).
   @internal
   static Future<void> configureAndroidAudioSession(Map<String, dynamic> configuration) async {
     try {
@@ -184,7 +184,7 @@ class Native {
     }
   }
 
-  /// Deactivate LiveKit's Android audio session (release focus, restore mode).
+  /// Deactivate WibeChat's Android audio session (release focus, restore mode).
   @internal
   static Future<void> stopAndroidAudioSession() async {
     try {
@@ -194,7 +194,7 @@ class Native {
     }
   }
 
-  /// Deactivate LiveKit's Apple audio session.
+  /// Deactivate WibeChat's Apple audio session.
   @internal
   static Future<void> deactivateAppleAudioSession() async {
     try {
@@ -217,11 +217,11 @@ class Native {
     }
   }
 
-  /// Enable or disable LiveKit's automatic iOS audio-session management from
+  /// Enable or disable WibeChat's automatic iOS audio-session management from
   /// native WebRTC audio-engine lifecycle callbacks.
   ///
-  /// [sessionActivationEnabled] controls whether LiveKit may activate or
-  /// deactivate the session at all. When false, LiveKit only configures the
+  /// [sessionActivationEnabled] controls whether WibeChat may activate or
+  /// deactivate the session at all. When false, WibeChat only configures the
   /// category/mode and an external system (CallKit) owns activation timing.
   @internal
   static Future<void> setAppleAudioSessionAutomaticManagementEnabled(

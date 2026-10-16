@@ -23,4 +23,4 @@ dartdoc:
   categoryOrder: ["Room", "Participant", "Track"]
   linkToSource:
     root: lib/src/
-    uriTemplate: https://github.com/livekit/client-sdk-flutter/blob/main/lib/src/%f%
+    uriTemplate: https://github.com/anshif-zartek/wibechat-sdk-flutter/blob/main/lib/src/%f%

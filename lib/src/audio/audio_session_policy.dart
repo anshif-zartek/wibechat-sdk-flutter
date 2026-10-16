@@ -53,9 +53,9 @@ class ResolvedAudioSessionPolicy {
   }
 
   AndroidAudioSessionConfiguration get androidConfiguration {
-    // In automatic mode LiveKit still owns activation timing, focus/routing
+    // In automatic mode WibeChat still owns activation timing, focus/routing
     // lifecycle, and speaker preference. The Android session intent itself is
-    // the current AudioSessionOptions value, seeded by LiveKitClient.initialize
+    // the current AudioSessionOptions value, seeded by WibeChatClient.initialize
     // or replaced explicitly by AudioManager.setAudioSessionOptions.
     return options.android;
   }

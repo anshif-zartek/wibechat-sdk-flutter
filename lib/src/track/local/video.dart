@@ -420,7 +420,7 @@ extension LocalVideoTrackExt on LocalVideoTrack {
     var hasChanged = false;
 
     // NOTE: closable spatial layer is disabled due to video blur / frozen issues
-    // with Chrome 113+ and LiveKit SFU PLI handling. See JS SDK LocalVideoTrack.ts:529-568.
+    // with Chrome 113+ and WibeChat SFU PLI handling. See JS SDK LocalVideoTrack.ts:529-568.
     // For SVC codecs, all layers are kept enabled and the SFU handles layer selection.
     if (isSVC) {
       final hasEnabledEncoding = layers.any((q) => q.enabled);

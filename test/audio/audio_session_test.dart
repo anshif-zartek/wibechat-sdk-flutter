@@ -16,16 +16,16 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/audio/android_audio_session_adapter.dart';
-import 'package:livekit_client/src/audio/audio_engine_error.dart';
-import 'package:livekit_client/src/audio/audio_manager.dart';
-import 'package:livekit_client/src/audio/audio_session.dart';
-import 'package:livekit_client/src/audio/audio_session_policy.dart';
-import 'package:livekit_client/src/exceptions.dart';
-import 'package:livekit_client/src/support/native.dart';
-import 'package:livekit_client/src/support/native_audio.dart' as native_audio;
-import 'package:livekit_client/src/support/webrtc_initialize_options.dart';
-import 'package:livekit_client/src/track/options.dart' as track_options;
+import 'package:wibechat_client/src/audio/android_audio_session_adapter.dart';
+import 'package:wibechat_client/src/audio/audio_engine_error.dart';
+import 'package:wibechat_client/src/audio/audio_manager.dart';
+import 'package:wibechat_client/src/audio/audio_session.dart';
+import 'package:wibechat_client/src/audio/audio_session_policy.dart';
+import 'package:wibechat_client/src/exceptions.dart';
+import 'package:wibechat_client/src/support/native.dart';
+import 'package:wibechat_client/src/support/native_audio.dart' as native_audio;
+import 'package:wibechat_client/src/support/webrtc_initialize_options.dart';
+import 'package:wibechat_client/src/track/options.dart' as track_options;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -694,7 +694,7 @@ void main() {
           calls.add(call);
           throw PlatformException(
             code: 'Unimplemented',
-            details: 'livekit for web does not implement ${call.method}',
+            details: 'wibechat for web does not implement ${call.method}',
           );
         },
       );
@@ -842,10 +842,10 @@ void main() {
     });
   });
 
-  group('liveKitWebRTCInitializeOptions', () {
+  group('wibeChatWebRTCInitializeOptions', () {
     test('includes Android audio configuration for Android startup', () {
       expect(
-        liveKitWebRTCInitializeOptions(
+        wibeChatWebRTCInitializeOptions(
           bypassVoiceProcessing: true,
           initialAudioSessionOptions: const AudioSessionOptions.mediaPlayback(),
           includeAndroidAudioConfiguration: true,
@@ -866,7 +866,7 @@ void main() {
 
     test('omits Android audio configuration on non-Android startup', () {
       expect(
-        liveKitWebRTCInitializeOptions(
+        wibeChatWebRTCInitializeOptions(
           bypassVoiceProcessing: false,
           initialAudioSessionOptions: const AudioSessionOptions.mediaPlayback(),
           includeAndroidAudioConfiguration: false,

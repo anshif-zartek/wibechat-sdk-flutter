@@ -13,18 +13,18 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.15)
-set(PROJECT_NAME "livekit_client")
+set(PROJECT_NAME "wibechat_client")
 project(${PROJECT_NAME} LANGUAGES CXX C)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "livekit_client_plugin")
+set(PLUGIN_NAME "wibechat_client_plugin")
 
 add_definitions(-D_USE_MATH_DEFINES)
 add_definitions(-DRTC_DESKTOP_DEVICE)
 
 add_library(${PLUGIN_NAME} SHARED
-  "livekit_plugin.cpp"
+  "wibechat_plugin.cpp"
   "task_runner_windows.cpp"
   "../shared_cpp/fft_processor.cpp"
   "../shared_cpp/audio_visualizer.cpp"
@@ -50,7 +50,7 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin flutter_webrtc_plugin)
 
 # List of absolute paths to libraries that should be bundled with the plugin
-set(livekit_client_bundled_libraries
+set(wibechat_client_bundled_libraries
   ""
   PARENT_SCOPE
 )

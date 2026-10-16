@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
 
 final localAudioTrack = lk_models.TrackInfo(
   sid: 'local_audio_track_sid',

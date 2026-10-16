@@ -151,7 +151,7 @@ enum StreamState {
 
 /// The reason a participant was disconnected from the room.
 ///
-/// Most values mirror the server's disconnect reasons from the LiveKit
+/// Most values mirror the server's disconnect reasons from the WibeChat
 /// protocol. [disconnected], [signalingConnectionFailure] and
 /// [reconnectAttemptsExceeded] are produced by this SDK for client side
 /// conditions and are never sent by the server.

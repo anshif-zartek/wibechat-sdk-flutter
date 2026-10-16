@@ -21,7 +21,7 @@ import 'token_source.dart';
 ///
 /// For dynamic token fetching, use [EndpointTokenSource] or implement [TokenSourceConfigurable].
 class LiteralTokenSource implements TokenSourceFixed {
-  /// The LiveKit server URL to connect to.
+  /// The WibeChat server URL to connect to.
   final String serverUrl;
 
   /// The JWT token for participant authentication.
@@ -36,7 +36,7 @@ class LiteralTokenSource implements TokenSourceFixed {
   /// Initialize with fixed credentials.
   ///
   /// - Parameters:
-  ///   - serverUrl: The LiveKit server URL to connect to
+  ///   - serverUrl: The WibeChat server URL to connect to
   ///   - participantToken: The JWT token for participant authentication
   ///   - participantName: The display name for the participant (optional)
   ///   - roomName: The name of the room to join (optional)

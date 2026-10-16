@@ -16,7 +16,7 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/support/reusable_completer.dart';
+import 'package:wibechat_client/src/support/reusable_completer.dart';
 
 void main() {
   group('ReusableCompleter', () {

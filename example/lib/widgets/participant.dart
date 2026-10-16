@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_example/theme.dart';
+import 'package:wibechat_client/wibechat_client.dart';
+import 'package:wibechat_example/theme.dart';
 
 import 'dart:async';
 import 'no_video.dart';

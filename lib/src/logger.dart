@@ -27,7 +27,7 @@ enum LoggerLevel {
   kOFF,
 }
 
-final logger = Logger('livekit');
+final logger = Logger('wibechat');
 
 /// disable logging
 void disableLogging() {

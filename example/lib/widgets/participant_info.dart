@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 enum ParticipantTrackType {
   kUserMedia,

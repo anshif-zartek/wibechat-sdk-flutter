@@ -22,9 +22,9 @@ import 'package:yaml/yaml.dart';
 
 class _Path {
   static const pubspec = 'pubspec.yaml';
-  static const iosPodspec = 'ios/livekit_client.podspec';
-  static const macosPodspec = 'macos/livekit_client.podspec';
-  static const livekitVersion = 'lib/src/livekit.dart';
+  static const iosPodspec = 'ios/wibechat_client.podspec';
+  static const macosPodspec = 'macos/wibechat_client.podspec';
+  static const wibechatVersion = 'lib/src/wibechat.dart';
 }
 
 class _Pattern {
@@ -63,7 +63,7 @@ void checkVersionConsistency(String expectedVersion) {
   final filesToCheck = [
     _Path.iosPodspec,
     _Path.macosPodspec,
-    _Path.livekitVersion,
+    _Path.wibechatVersion,
   ];
 
   for (final file in filesToCheck) {

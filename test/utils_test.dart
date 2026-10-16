@@ -15,8 +15,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/utils.dart';
+import 'package:wibechat_client/src/utils.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 void main() {
   group('retry', () {

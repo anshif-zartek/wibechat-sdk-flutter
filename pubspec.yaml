@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: livekit_client
-description: Flutter Client SDK for LiveKit. Build real-time video and audio
+name: wibechat_client
+description: Flutter Client SDK for WibeChat. Build real-time video and audio
   into your apps. Supports iOS, Android, and Web.
 version: 2.13.1
-homepage: https://github.com/livekit/client-sdk-flutter
+homepage: https://github.com/anshif-zartek/wibechat-sdk-flutter
 
 # Test fixture keys for certificate pinning tests, not real secrets.
 false_secrets:
@@ -78,19 +78,19 @@ flutter:
   plugin:
     platforms:
       ios:
-        pluginClass: LiveKitPlugin
+        pluginClass: WibeChatPlugin
       android:
-        package: io.livekit.plugin
-        pluginClass: LiveKitPlugin
+        package: io.wibechat.plugin
+        pluginClass: WibeChatPlugin
       macos:
-        pluginClass: LiveKitPlugin
+        pluginClass: WibeChatPlugin
       windows:
-        pluginClass: LiveKitPlugin
+        pluginClass: WibeChatPlugin
       linux:
-        pluginClass: LiveKitPlugin
+        pluginClass: WibeChatPlugin
       web:
-        pluginClass: LiveKitWebPlugin
-        fileName: livekit_client_web.dart
+        pluginClass: WibeChatWebPlugin
+        fileName: wibechat_client_web.dart
 
 topics:
   - webrtc

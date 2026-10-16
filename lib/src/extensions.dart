@@ -34,8 +34,8 @@ extension DataPacketKindExt on lk_models.DataPacket_Kind {
   };
 }
 
-extension LiveKitEventExt on Iterable<EventsEmitter<LiveKitEvent>> {
-  void emit(LiveKitEvent event) => forEach((emitter) => emitter.emit(event));
+extension WibeChatEventExt on Iterable<EventsEmitter<WibeChatEvent>> {
+  void emit(WibeChatEvent event) => forEach((emitter) => emitter.emit(event));
 }
 
 extension ICEServerExt on lk_rtc.ICEServer {

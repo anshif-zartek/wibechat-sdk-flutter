@@ -106,7 +106,7 @@ class TokenRequestOptions {
   }
 }
 
-/// The JSON serializable format of the request sent to standard LiveKit token servers.
+/// The JSON serializable format of the request sent to standard WibeChat token servers.
 ///
 /// This is an internal wire format class that separates the public API ([TokenRequestOptions])
 /// from the JSON structure sent over the network.
@@ -143,10 +143,10 @@ class TokenSourceRequest {
   Map<String, dynamic> toJson() => _$TokenSourceRequestToJson(this);
 }
 
-/// Response containing the credentials needed to connect to a LiveKit room.
+/// Response containing the credentials needed to connect to a WibeChat room.
 @JsonSerializable()
 class TokenSourceResponse {
-  /// The WebSocket URL for the LiveKit server. Use this to establish the connection.
+  /// The WebSocket URL for the WibeChat server. Use this to establish the connection.
   @JsonKey(name: 'server_url')
   final String serverUrl;
 
@@ -200,7 +200,7 @@ abstract class TokenSourceFixed {
 ///
 /// Common implementations:
 /// - [DevelopmentTokenSource]: For testing with LiveKit Cloud development token server
-/// - [EndpointTokenSource]: For custom backend endpoints using LiveKit's JSON format
+/// - [EndpointTokenSource]: For custom backend endpoints using WibeChat's JSON format
 /// - [CachingTokenSource]: For caching credentials (or use the `.cached()` extension method)
 abstract class TokenSourceConfigurable {
   Future<TokenSourceResponse> fetch(TokenRequestOptions options);

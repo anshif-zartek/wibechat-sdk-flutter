@@ -20,18 +20,18 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/core/engine.dart';
-import 'package:livekit_client/src/core/signal_client.dart';
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
-import 'package:livekit_client/src/support/websocket.dart';
+import 'package:wibechat_client/src/core/engine.dart';
+import 'package:wibechat_client/src/core/signal_client.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/src/support/websocket.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 import '../core/signal_client_test.dart';
 import '../mock/peerconnection_mock.dart';
 
 /// A websocket that records every outgoing [lk_rtc.SignalRequest] so tests can
 /// assert on what the SDK actually sends to the server.
-class _CapturingWebSocket extends LiveKitWebSocket {
+class _CapturingWebSocket extends WibeChatWebSocket {
   final List<lk_rtc.SignalRequest> sent = [];
 
   @override
@@ -44,7 +44,7 @@ class _CapturingConnector {
 
   WebSocketOnData get onData => handlers!.onData!;
 
-  Future<LiveKitWebSocket> connect(
+  Future<WibeChatWebSocket> connect(
     Uri uri, {
     WebSocketEventHandlers? options,
     Map<String, String>? headers,

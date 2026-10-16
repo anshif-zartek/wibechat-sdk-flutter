@@ -14,8 +14,8 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/options.dart';
-import 'package:livekit_client/src/types/other.dart';
+import 'package:wibechat_client/src/options.dart';
+import 'package:wibechat_client/src/types/other.dart';
 
 void main() {
   group('getDefaultDegradationPreference', () {

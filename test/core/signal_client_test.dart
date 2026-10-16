@@ -18,11 +18,11 @@ library;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:protobuf/protobuf.dart';
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/core/signal_client.dart';
-import 'package:livekit_client/src/internal/events.dart';
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/src/core/signal_client.dart';
+import 'package:wibechat_client/src/internal/events.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/wibechat_client.dart';
 import '../mock/test_data.dart';
 import '../mock/websocket_mock.dart';
 

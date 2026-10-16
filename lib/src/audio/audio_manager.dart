@@ -68,7 +68,7 @@ class AudioEngineState {
   String toString() => 'AudioEngineState(isPlayoutEnabled: $isPlayoutEnabled, isRecordingEnabled: $isRecordingEnabled)';
 }
 
-/// Controls LiveKit's process-wide platform audio behavior.
+/// Controls WibeChat's process-wide platform audio behavior.
 ///
 /// Platform audio sessions and the audio processing module are global to the
 /// app process, so session options and engine-scoped audio state live here
@@ -159,8 +159,8 @@ class AudioManager {
 
   /// Seeds the initial session intent without taking over the session lifecycle.
   ///
-  /// `LiveKitClient.initialize(initialAudioSessionOptions: ...)` uses this so the
-  /// WebRTC initialization-time Android audio attributes and LiveKit's automatic
+  /// `WibeChatClient.initialize(initialAudioSessionOptions: ...)` uses this so the
+  /// WebRTC initialization-time Android audio attributes and WibeChat's automatic
   /// runtime session policy start from the same intent. Unlike
   /// [setAudioSessionOptions], this keeps the current management mode and does
   /// not apply native session changes immediately.
@@ -180,8 +180,8 @@ class AudioManager {
   /// Applies an explicit audio session configuration and switches to manual mode.
   ///
   /// Calling this puts [AudioManager] in [AudioSessionManagementMode.manual]:
-  /// LiveKit stops managing the session from room, connect, and engine
-  /// lifecycle, and the app owns it from here. Hand control back to LiveKit with
+  /// WibeChat stops managing the session from room, connect, and engine
+  /// lifecycle, and the app owns it from here. Hand control back to WibeChat with
   /// [setAudioSessionManagementMode] and [AudioSessionManagementMode.automatic].
   ///
   /// The speaker preference and force flag are owned by setSpeakerOutputPreferred
@@ -210,7 +210,7 @@ class AudioManager {
   /// [AudioEngineAvailability.none] before connecting, then flip to
   /// [AudioEngineAvailability.defaultAvailability] in CallKit's
   /// `provider(didActivate:)` and back to `none` in `didDeactivate`. Combine
-  /// with [AudioSessionManagementMode.externalCallSystem] so LiveKit never
+  /// with [AudioSessionManagementMode.externalCallSystem] so WibeChat never
   /// activates the session itself.
   ///
   /// iOS/macOS only. A no-op elsewhere, so it is always safe to call from
@@ -236,16 +236,16 @@ class AudioManager {
     }
   }
 
-  /// Selects whether LiveKit manages the platform audio session automatically.
+  /// Selects whether WibeChat manages the platform audio session automatically.
   ///
-  /// In [AudioSessionManagementMode.manual], LiveKit does not update the audio
+  /// In [AudioSessionManagementMode.manual], WibeChat does not update the audio
   /// session from room, connect, or track lifecycle. The app can still apply a
   /// configuration explicitly with [setAudioSessionOptions] and release it with
   /// [deactivateAudioSession].
   ///
   /// Prefer setting this before connecting to a room. flutter_webrtc's own
-  /// native audio management is always disabled (LiveKit owns the session).
-  /// Switching back to automatic mode reapplies LiveKit's managed policy.
+  /// native audio management is always disabled (WibeChat owns the session).
+  /// Switching back to automatic mode reapplies WibeChat's managed policy.
   ///
   /// Experimental: this API may change in a future release.
   @experimental
@@ -261,7 +261,7 @@ class AudioManager {
   /// Switches to manual mode if not already, syncing the native side once.
   ///
   /// [AudioSessionManagementMode.externalCallSystem] is preserved: an explicit
-  /// configuration under an external call system applies without LiveKit
+  /// configuration under an external call system applies without WibeChat
   /// taking over the session lifecycle.
   Future<void> _enterManualMode() async {
     if (_managementMode != AudioSessionManagementMode.automatic) return;
@@ -272,7 +272,7 @@ class AudioManager {
   /// Deactivates the current platform audio session and switches to manual mode.
   ///
   /// Like [setAudioSessionOptions], calling this puts [AudioManager] in
-  /// [AudioSessionManagementMode.manual] so LiveKit does not re-activate the
+  /// [AudioSessionManagementMode.manual] so WibeChat does not re-activate the
   /// session on its own. Re-apply a configuration with [setAudioSessionOptions],
   /// or hand control back with [setAudioSessionManagementMode].
   ///
@@ -297,7 +297,7 @@ class AudioManager {
   /// when [preferred] is true. Set [force] to force the speaker even when a
   /// headset is connected.
   ///
-  /// LiveKit owns this routing on both platforms (Android via its own
+  /// WibeChat owns this routing on both platforms (Android via its own
   /// audioswitch handler and iOS via its audio session), so it does not depend
   /// on flutter_webrtc.
   Future<void> setSpeakerOutputPreferred(bool preferred, {bool force = false}) async {
@@ -430,7 +430,7 @@ class AudioManager {
   /// [MicrophoneMuteMode.restart] to mute silently.
   ///
   /// The mode applies whenever the engine mutes microphone input, which
-  /// includes LiveKit's own mute path: muting a published local audio track
+  /// includes WibeChat's own mute path: muting a published local audio track
   /// (e.g. `LocalParticipant.setMicrophoneEnabled(false)`) disables the
   /// track, and WebRTC mutes the engine input using this mode. With the
   /// default `AudioCaptureOptions.stopAudioCaptureOnMute` (true) the capture

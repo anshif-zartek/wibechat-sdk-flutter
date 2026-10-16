@@ -6,7 +6,7 @@ part of 'jwt.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LiveKitVideoGrant _$LiveKitVideoGrantFromJson(Map<String, dynamic> json) => LiveKitVideoGrant(
+WibeChatVideoGrant _$WibeChatVideoGrantFromJson(Map<String, dynamic> json) => WibeChatVideoGrant(
   room: json['room'] as String?,
   roomCreate: json['roomCreate'] as bool?,
   roomJoin: json['roomJoin'] as bool?,
@@ -21,7 +21,7 @@ LiveKitVideoGrant _$LiveKitVideoGrantFromJson(Map<String, dynamic> json) => Live
   recorder: json['recorder'] as bool?,
 );
 
-Map<String, dynamic> _$LiveKitVideoGrantToJson(LiveKitVideoGrant instance) => <String, dynamic>{
+Map<String, dynamic> _$WibeChatVideoGrantToJson(WibeChatVideoGrant instance) => <String, dynamic>{
   'room': ?instance.room,
   'roomCreate': ?instance.roomCreate,
   'roomJoin': ?instance.roomJoin,

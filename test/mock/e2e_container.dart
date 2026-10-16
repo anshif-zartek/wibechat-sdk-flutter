@@ -18,11 +18,11 @@ import 'dart:typed_data';
 import 'package:fixnum/fixnum.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' show RTCDataChannelMessage;
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/core/engine.dart';
-import 'package:livekit_client/src/core/signal_client.dart';
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/src/core/engine.dart';
+import 'package:wibechat_client/src/core/signal_client.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/wibechat_client.dart';
 import '../core/signal_client_test.dart';
 import 'peerconnection_mock.dart';
 import 'test_data.dart';

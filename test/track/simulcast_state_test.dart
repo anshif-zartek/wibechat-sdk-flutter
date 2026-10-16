@@ -17,9 +17,9 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/src/track/local/video.dart';
-import 'package:livekit_client/src/track/options.dart';
-import 'package:livekit_client/src/types/other.dart';
+import 'package:wibechat_client/src/track/local/video.dart';
+import 'package:wibechat_client/src/track/options.dart';
+import 'package:wibechat_client/src/types/other.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

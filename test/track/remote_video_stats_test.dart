@@ -16,8 +16,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 import 'package:mockito/mockito.dart';
 
-import 'package:livekit_client/src/track/remote/video.dart';
-import 'package:livekit_client/src/types/other.dart';
+import 'package:wibechat_client/src/track/remote/video.dart';
+import 'package:wibechat_client/src/types/other.dart';
 
 class _Stream extends Mock implements rtc.MediaStream {}
 

@@ -1,4 +1,4 @@
-group = "io.livekit.plugin"
+group = "io.wibechat.plugin"
 version = "1.0-SNAPSHOT"
 
 buildscript {
@@ -38,7 +38,7 @@ if (!builtInKotlinActive) {
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace = "io.livekit.plugin"
+        namespace = "io.wibechat.plugin"
     }
 
     compileSdk = 36
@@ -63,7 +63,7 @@ android {
         implementation 'io.github.webrtc-sdk:android:150.7871.01'
         implementation 'io.livekit:noise:2.0.0'
         // Audio device/focus/mode routing. Pinned to the same revision used by
-        // the LiveKit Android SDK (AudioSwitchHandler).
+        // the WibeChat Android SDK (AudioSwitchHandler).
         implementation 'com.github.davidliu:audioswitch:039a35aefab7747c557242fa216c9ea11743b604'
     }
 

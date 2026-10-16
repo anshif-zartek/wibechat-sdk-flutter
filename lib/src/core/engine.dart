@@ -208,7 +208,7 @@ class Engine extends Disposable with EventsEmittable<EngineEvent> {
     SignalClient? signalClient,
     PeerConnectionCreate? peerConnectionCreate,
     E2EEManager? e2eeManager,
-  }) : signalClient = signalClient ?? SignalClient(LiveKitWebSocket.connect),
+  }) : signalClient = signalClient ?? SignalClient(WibeChatWebSocket.connect),
        _peerConnectionCreate = peerConnectionCreate ?? rtc.createPeerConnection,
        _e2eeManager = e2eeManager {
     if (kDebugMode) {

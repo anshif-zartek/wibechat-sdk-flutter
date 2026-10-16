@@ -55,7 +55,7 @@ class AudioFrameCaptureNative implements AudioFrameCapture {
 
     _rendererId = rendererId;
 
-    _eventChannel = EventChannel('io.livekit.audio.renderer/channel-$rendererId');
+    _eventChannel = EventChannel('io.wibechat.audio.renderer/channel-$rendererId');
     _streamSubscription = _eventChannel?.receiveBroadcastStream().listen((event) {
       try {
         final rawFormat = event['commonFormat'] as String?;

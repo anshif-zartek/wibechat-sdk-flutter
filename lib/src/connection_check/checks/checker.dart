@@ -110,7 +110,7 @@ class CheckerOptions {
   /// Options for the [Room] instances created by each check.
   RoomOptions? roomOptions;
 
-  /// Options used when connecting to the LiveKit server.
+  /// Options used when connecting to the WibeChat server.
   ConnectOptions? connectOptions;
 
   /// Preferred connection protocol. Set by the connection protocol check so
@@ -156,7 +156,7 @@ abstract class Checker extends Disposable with EventsEmittable<CheckerEvent> {
     });
   }
 
-  /// URL of the LiveKit server to run the check against.
+  /// URL of the WibeChat server to run the check against.
   ///
   /// Not final because some checks (e.g. TURN) resolve a region specific URL.
   String url;
@@ -296,7 +296,7 @@ abstract class Checker extends Disposable with EventsEmittable<CheckerEvent> {
   /// returns the server's join response.
   @protected
   Future<lk_rtc.JoinResponse> signalJoin(String url) async {
-    final signalClient = SignalClient(wsConnector ?? LiveKitWebSocket.connect);
+    final signalClient = SignalClient(wsConnector ?? WibeChatWebSocket.connect);
     final listener = signalClient.createListener();
     try {
       final joinCompleter = Completer<lk_rtc.JoinResponse>();
@@ -324,7 +324,7 @@ abstract class Checker extends Disposable with EventsEmittable<CheckerEvent> {
   /// Extracts a human readable message from [error].
   @protected
   String messageFor(Object error) {
-    if (error is LiveKitException) {
+    if (error is WibeChatException) {
       return error.message;
     }
     return error.toString();

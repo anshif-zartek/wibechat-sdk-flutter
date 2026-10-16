@@ -28,11 +28,11 @@ const String audioEngineErrorCodeAudioSessionInvalidCategory = 'audioSessionInva
 const String audioEngineErrorCodeAudioSessionConfigureFailed = 'audioSessionConfigureFailed';
 
 /// Maps a [PlatformException] from an audio device module call to the
-/// [LiveKitException] describing its cause, or `null` when the code is not one
+/// [WibeChatException] describing its cause, or `null` when the code is not one
 /// of the known audio engine failures and the caller should apply its own
 /// mapping.
 @internal
-LiveKitException? audioEngineExceptionFrom(PlatformException error) {
+WibeChatException? audioEngineExceptionFrom(PlatformException error) {
   final native = error.message?.trim() ?? '';
   String message(String fallback) => native.isEmpty ? fallback : native;
   switch (error.code) {

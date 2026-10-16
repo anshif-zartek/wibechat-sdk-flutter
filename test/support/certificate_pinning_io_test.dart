@@ -18,12 +18,12 @@ import 'dart:io' as io;
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/exceptions.dart';
-import 'package:livekit_client/src/options.dart';
-import 'package:livekit_client/src/support/certificate_pinning.dart';
-import 'package:livekit_client/src/support/http_client.dart';
-import 'package:livekit_client/src/support/http_client/io.dart';
-import 'package:livekit_client/src/support/websocket.dart';
+import 'package:wibechat_client/src/exceptions.dart';
+import 'package:wibechat_client/src/options.dart';
+import 'package:wibechat_client/src/support/certificate_pinning.dart';
+import 'package:wibechat_client/src/support/http_client.dart';
+import 'package:wibechat_client/src/support/http_client/io.dart';
+import 'package:wibechat_client/src/support/websocket.dart';
 
 const _testServerHost = '127.0.0.1';
 
@@ -187,7 +187,7 @@ void main() {
     addTearDown(server.close);
 
     await expectLater(
-      LiveKitWebSocket.connect(
+      WibeChatWebSocket.connect(
         Uri.parse('wss://$_testServerHost:${server.port}/rtc'),
         headers: const {'Authorization': 'Bearer token'},
         networkOptions: NetworkOptions(

@@ -14,7 +14,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/connection_check/checks/webrtc.dart';
+import 'package:wibechat_client/src/connection_check/checks/webrtc.dart';
 
 void main() {
   group('parseIceCandidate', () {

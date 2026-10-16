@@ -15,12 +15,12 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/token_source/custom.dart';
-import 'package:livekit_client/src/token_source/development.dart';
-import 'package:livekit_client/src/token_source/jwt.dart';
-import 'package:livekit_client/src/token_source/literal.dart';
-import 'package:livekit_client/src/token_source/room_configuration.dart';
-import 'package:livekit_client/src/token_source/token_source.dart';
+import 'package:wibechat_client/src/token_source/custom.dart';
+import 'package:wibechat_client/src/token_source/development.dart';
+import 'package:wibechat_client/src/token_source/jwt.dart';
+import 'package:wibechat_client/src/token_source/literal.dart';
+import 'package:wibechat_client/src/token_source/room_configuration.dart';
+import 'package:wibechat_client/src/token_source/token_source.dart';
 
 void main() {
   group('JWT Validation', () {
@@ -152,14 +152,14 @@ void main() {
     });
   });
 
-  group('LiveKitJwtPayload', () {
+  group('WibeChatJwtPayload', () {
     test('parses claims and grants from token', () {
       final now = DateTime.timestamp();
       final exp = (now.millisecondsSinceEpoch ~/ 1000) + 3600;
       final token = _generateToken(
         exp: exp,
         iat: now.millisecondsSinceEpoch ~/ 1000,
-        issuer: 'livekit',
+        issuer: 'wibechat',
         subject: 'participant-123',
         name: 'Alice',
         metadata: '{"key":"value"}',
@@ -192,7 +192,7 @@ void main() {
 
       final payload = response.jwtPayload;
       expect(payload, isNotNull);
-      expect(payload!.issuer, 'livekit');
+      expect(payload!.issuer, 'wibechat');
       expect(payload.identity, 'participant-123');
       expect(payload.name, 'Alice');
       expect(payload.metadata, '{"key":"value"}');

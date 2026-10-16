@@ -15,8 +15,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/src/extensions.dart';
-import 'package:livekit_client/src/options.dart';
+import 'package:wibechat_client/src/extensions.dart';
+import 'package:wibechat_client/src/options.dart';
 
 void main() {
   group('DegradationPreference.toRTCType', () {

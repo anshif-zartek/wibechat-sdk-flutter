@@ -16,10 +16,10 @@ import '../events.dart';
 import 'checks/checker.dart';
 
 /// Base type for events emitted by `ConnectionCheck`.
-mixin ConnectionCheckEvent implements LiveKitEvent {}
+mixin ConnectionCheckEvent implements WibeChatEvent {}
 
 /// Base type for events emitted by a [Checker].
-mixin CheckerEvent implements LiveKitEvent {}
+mixin CheckerEvent implements WibeChatEvent {}
 
 /// Emitted by `ConnectionCheck` whenever the state of one of its checks
 /// changes (status change or a new log entry).

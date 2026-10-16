@@ -46,7 +46,7 @@ final class BroadcastManager {
         view.showsMicrophoneButton = false
 
         guard let button = view.subviews.compactMap({ $0 as? UIButton }).first else {
-            print("[LiveKit] Unable to find button in RPSystemBroadcastPickerView")
+            print("[WibeChat] Unable to find button in RPSystemBroadcastPickerView")
             return
         }
         button.sendActions(for: .touchUpInside)

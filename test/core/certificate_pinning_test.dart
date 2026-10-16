@@ -17,9 +17,9 @@ library;
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/core/signal_client.dart';
-import 'package:livekit_client/src/internal/events.dart';
+import 'package:wibechat_client/src/core/signal_client.dart';
+import 'package:wibechat_client/src/internal/events.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 import '../mock/websocket_mock.dart';
 
 const exampleUri = 'ws://www.example.com';

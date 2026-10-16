@@ -21,10 +21,10 @@ import '../support/value_or_absent.dart';
 /// Experimental: this API may change in a future release.
 @experimental
 enum AudioSessionManagementMode {
-  /// LiveKit updates the platform audio session based on room/track lifecycle.
+  /// WibeChat updates the platform audio session based on room/track lifecycle.
   automatic,
 
-  /// LiveKit does not update the platform audio session automatically.
+  /// WibeChat does not update the platform audio session automatically.
   ///
   /// The app must call AudioManager APIs when it wants to apply a session
   /// configuration.
@@ -33,7 +33,7 @@ enum AudioSessionManagementMode {
   /// An external telephony system (iOS CallKit / Android Telecom) owns the
   /// platform audio lifecycle.
   ///
-  /// On iOS, LiveKit keeps configuring the session's category/mode/options
+  /// On iOS, WibeChat keeps configuring the session's category/mode/options
   /// from the audio engine lifecycle like [automatic], but never activates or
   /// deactivates the session, since CallKit owns activation timing. Combine
   /// with `AudioManager.setEngineAvailability` so the engine only runs inside
@@ -41,9 +41,9 @@ enum AudioSessionManagementMode {
   ///
   /// On Android this currently behaves like [automatic] for session
   /// configuration, so a cross-platform app can set this mode once at
-  /// startup: iOS gets the CallKit contract and Android keeps LiveKit's
+  /// startup: iOS gets the CallKit contract and Android keeps WibeChat's
   /// normal session management. When Telecom (`androidx.core.telecom`)
-  /// integration lands, this mode will stand down LiveKit's audio-focus and
+  /// integration lands, this mode will stand down WibeChat's audio-focus and
   /// routing management, which the Telecom framework owns for registered
   /// calls.
   ///
@@ -86,8 +86,8 @@ class AudioSessionOptions {
   ///
   /// This pre-fills playback-oriented platform policies. Apple and Android
   /// media routing are platform-owned. On Android, pass this to
-  /// `LiveKitClient.initialize` before WebRTC initializes when WebRTC playout
-  /// should use media `AudioAttributes`; the same value seeds LiveKit's initial
+  /// `WibeChatClient.initialize` before WebRTC initializes when WebRTC playout
+  /// should use media `AudioAttributes`; the same value seeds WibeChat's initial
   /// automatic runtime media session policy.
   const AudioSessionOptions.mediaPlayback({
     AppleAudioSessionConfiguration apple = AppleAudioSessionConfiguration.media,
@@ -256,7 +256,7 @@ class AndroidAudioSessionConfiguration {
   /// Android AudioManager mode.
   final AndroidAudioMode? audioMode;
 
-  /// Whether LiveKit should manage Android audio focus.
+  /// Whether WibeChat should manage Android audio focus.
   final bool? manageAudioFocus;
 
   /// Requested Android audio focus gain type.
@@ -271,7 +271,7 @@ class AndroidAudioSessionConfiguration {
   /// Android AudioAttributes content type.
   final AndroidAudioAttributesContentType? contentType;
 
-  /// Forces LiveKit audio routing even outside communication/call modes.
+  /// Forces WibeChat audio routing even outside communication/call modes.
   final bool? forceAudioRouting;
 
   const AndroidAudioSessionConfiguration({

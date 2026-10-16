@@ -15,8 +15,8 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/token_source/caching.dart';
-import 'package:livekit_client/src/token_source/token_source.dart';
+import 'package:wibechat_client/src/token_source/caching.dart';
+import 'package:wibechat_client/src/token_source/token_source.dart';
 
 void main() {
   group('CachingTokenSource', () {

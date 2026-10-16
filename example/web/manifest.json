@@ -1,6 +1,6 @@
 {
-    "name": "livekit_example",
-    "short_name": "livekit_example",
+    "name": "wibechat_example",
+    "short_name": "wibechat_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

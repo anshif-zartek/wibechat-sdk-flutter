@@ -38,7 +38,7 @@ class AudioVisualizerNative extends AudioVisualizer {
       smoothTransition: visualizerOptions.smoothTransition,
     );
 
-    _eventChannel = EventChannel('io.livekit.audio.visualizer/eventChannel-${mediaStreamTrack.id}-$visualizerId');
+    _eventChannel = EventChannel('io.wibechat.audio.visualizer/eventChannel-${mediaStreamTrack.id}-$visualizerId');
     _streamSubscription = _eventChannel?.receiveBroadcastStream().listen((event) {
       events.emit(
         AudioVisualizerEvent(

@@ -18,9 +18,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-import 'package:livekit_client/src/token_source/endpoint.dart';
-import 'package:livekit_client/src/token_source/room_configuration.dart';
-import 'package:livekit_client/src/token_source/token_source.dart';
+import 'package:wibechat_client/src/token_source/endpoint.dart';
+import 'package:wibechat_client/src/token_source/room_configuration.dart';
+import 'package:wibechat_client/src/token_source/token_source.dart';
 
 void main() {
   group('EndpointTokenSource HTTP Tests', () {

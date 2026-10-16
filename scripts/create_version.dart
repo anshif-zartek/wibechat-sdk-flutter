@@ -48,9 +48,9 @@ class _Path {
   static const changelog = 'CHANGELOG.md';
   static const pubspec = 'pubspec.yaml';
   static const readme = 'README.md';
-  static const livekitVersion = 'lib/src/livekit.dart';
-  static const iosPodspec = 'ios/livekit_client.podspec';
-  static const macosPodspec = 'macos/livekit_client.podspec';
+  static const wibechatVersion = 'lib/src/wibechat.dart';
+  static const iosPodspec = 'ios/wibechat_client.podspec';
+  static const macosPodspec = 'macos/wibechat_client.podspec';
 }
 
 // ANSI color codes
@@ -287,9 +287,9 @@ void updateVersionFiles(SemanticVersion version) {
     'version: $version',
   );
 
-  // Update lib/src/livekit.dart
+  // Update lib/src/wibechat.dart
   replaceVersionInFile(
-    _Path.livekitVersion,
+    _Path.wibechatVersion,
     RegExp(r"static const version = '[^']*'"),
     "static const version = '$version'",
   );
@@ -311,8 +311,8 @@ void updateVersionFiles(SemanticVersion version) {
   // Update README.md installation snippet
   replaceVersionInFile(
     _Path.readme,
-    RegExp(r'^\s*livekit_client:\s+.*$', multiLine: true),
-    '  livekit_client: ^$version',
+    RegExp(r'^\s*wibechat_client:\s+.*$', multiLine: true),
+    '  wibechat_client: ^$version',
   );
 }
 

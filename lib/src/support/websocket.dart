@@ -39,17 +39,17 @@ class WebSocketEventHandlers {
 }
 
 typedef WebSocketConnector =
-    Future<LiveKitWebSocket> Function(
+    Future<WibeChatWebSocket> Function(
       Uri uri, {
       WebSocketEventHandlers? options,
       Map<String, String>? headers,
       NetworkOptions? networkOptions,
     });
 
-abstract class LiveKitWebSocket extends Disposable {
+abstract class WibeChatWebSocket extends Disposable {
   void send(List<int> data);
 
-  static Future<LiveKitWebSocket> connect(
+  static Future<WibeChatWebSocket> connect(
     Uri uri, {
     WebSocketEventHandlers? options,
     Map<String, String>? headers,

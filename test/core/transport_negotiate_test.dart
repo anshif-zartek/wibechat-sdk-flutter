@@ -20,9 +20,9 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/src/core/transport.dart' show Transport;
-import 'package:livekit_client/src/exceptions.dart' show NegotiationError;
-import 'package:livekit_client/src/options.dart' show ConnectOptions;
+import 'package:wibechat_client/src/core/transport.dart' show Transport;
+import 'package:wibechat_client/src/exceptions.dart' show NegotiationError;
+import 'package:wibechat_client/src/options.dart' show ConnectOptions;
 import '../mock/peerconnection_mock.dart';
 
 class _RejectingPeerConnection extends MockPeerConnection {

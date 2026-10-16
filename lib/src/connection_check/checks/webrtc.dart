@@ -18,7 +18,7 @@ import '../../internal/events.dart';
 import '../../logger.dart';
 import 'checker.dart';
 
-/// Verifies that a WebRTC (peer) connection to the LiveKit server can be
+/// Verifies that a WebRTC (peer) connection to the WibeChat server can be
 /// established, and inspects the ICE candidates provided by the server.
 class WebRTCCheck extends Checker {
   WebRTCCheck(super.url, super.token, {super.options, super.room});

@@ -16,7 +16,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 class TestKeyProvider implements rtc.KeyProvider {
   TestKeyProvider({this.id = 'test-key-provider'});

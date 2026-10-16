@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/support/disposable.dart';
+import 'package:wibechat_client/src/support/disposable.dart';
 
 class TestDisposable extends Disposable {
   @override

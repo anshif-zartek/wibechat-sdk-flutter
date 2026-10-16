@@ -1,5 +1,5 @@
-name: livekit_example
-description: Example app that uses LiveKit Flutter SDK
+name: wibechat_example
+description: Example app that uses WibeChat Flutter SDK
 publish_to: 'none'
 
 version: 1.0.0
@@ -22,7 +22,7 @@ dependencies:
   dropdown_button2: ^2.3.6
   collection: '>=1.16.0'
 
-  livekit_client:
+  wibechat_client:
     path: ../
 
 dev_dependencies:
@@ -33,7 +33,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   # Swift Package Manager is disabled for the example because this app lives inside the
-  # livekit_client plugin it depends on. With SPM enabled, the Flutter tool (>= 3.44) copies
+  # wibechat_client plugin it depends on. With SPM enabled, the Flutter tool (>= 3.44) copies
   # the whole plugin directory into build/<platform>/SourcePackages when the plugin's
   # Package.swift depends on another plugin (flutter_webrtc). Since that destination is inside
   # the plugin directory itself, every build copies the previous copy again and the build

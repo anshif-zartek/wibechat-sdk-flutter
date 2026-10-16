@@ -20,23 +20,23 @@ import 'token_source.dart';
 
 part 'jwt.g.dart';
 
-/// Parsed payload for a LiveKit-issued JWT.
-class LiveKitJwtPayload {
-  LiveKitJwtPayload._(this._claims);
+/// Parsed payload for a WibeChat-issued JWT.
+class WibeChatJwtPayload {
+  WibeChatJwtPayload._(this._claims);
 
-  factory LiveKitJwtPayload.fromClaims(Map<String, dynamic> claims) {
-    return LiveKitJwtPayload._(Map<String, dynamic>.from(claims));
+  factory WibeChatJwtPayload.fromClaims(Map<String, dynamic> claims) {
+    return WibeChatJwtPayload._(Map<String, dynamic>.from(claims));
   }
 
-  static LiveKitJwtPayload? fromToken(String token) {
+  static WibeChatJwtPayload? fromToken(String token) {
     try {
       final jwt = JWT.decode(token);
       final claims = jwt.payload;
       if (claims is Map<String, dynamic>) {
-        return LiveKitJwtPayload.fromClaims(claims);
+        return WibeChatJwtPayload.fromClaims(claims);
       }
       if (claims is Map) {
-        return LiveKitJwtPayload.fromClaims(Map<String, dynamic>.from(claims));
+        return WibeChatJwtPayload.fromClaims(Map<String, dynamic>.from(claims));
       }
     } on JWTException {
       return null;
@@ -68,10 +68,10 @@ class LiveKitJwtPayload {
   Map<String, String>? get attributes => _stringMapFor('attributes');
 
   /// Video-specific grants embedded in the token, if present.
-  LiveKitVideoGrant? get video {
+  WibeChatVideoGrant? get video {
     final raw = _claims['video'];
     if (raw is Map) {
-      return LiveKitVideoGrant.fromJson(Map<String, dynamic>.from(raw));
+      return WibeChatVideoGrant.fromJson(Map<String, dynamic>.from(raw));
     }
     return null;
   }
@@ -129,10 +129,10 @@ class LiveKitJwtPayload {
   }
 }
 
-/// LiveKit-specific video grants embedded within a JWT.
+/// WibeChat-specific video grants embedded within a JWT.
 @JsonSerializable()
-class LiveKitVideoGrant {
-  // Field names match the camelCase keys of the `video` claim that LiveKit
+class WibeChatVideoGrant {
+  // Field names match the camelCase keys of the `video` claim that WibeChat
   // server SDKs write, so they need no `@JsonKey` renames.
   final String? room;
   final bool? roomCreate;
@@ -147,7 +147,7 @@ class LiveKitVideoGrant {
   final bool? hidden;
   final bool? recorder;
 
-  const LiveKitVideoGrant({
+  const WibeChatVideoGrant({
     this.room,
     this.roomCreate,
     this.roomJoin,
@@ -162,13 +162,13 @@ class LiveKitVideoGrant {
     this.recorder,
   });
 
-  factory LiveKitVideoGrant.fromJson(Map<String, dynamic> json) => _$LiveKitVideoGrantFromJson(json);
-  Map<String, dynamic> toJson() => _$LiveKitVideoGrantToJson(this);
+  factory WibeChatVideoGrant.fromJson(Map<String, dynamic> json) => _$WibeChatVideoGrantFromJson(json);
+  Map<String, dynamic> toJson() => _$WibeChatVideoGrantToJson(this);
 }
 
 extension TokenSourceJwt on TokenSourceResponse {
   /// Decode the participant token and return the parsed payload, if valid.
-  LiveKitJwtPayload? get jwtPayload => LiveKitJwtPayload.fromToken(participantToken);
+  WibeChatJwtPayload? get jwtPayload => WibeChatJwtPayload.fromToken(participantToken);
 
   /// Returns `true` when the participant token is valid (not expired and past its not-before time).
   ///
@@ -207,30 +207,30 @@ extension TokenSourceJwt on TokenSourceResponse {
   }
 }
 
-/// Extension to extract LiveKit-specific claims from JWT tokens.
-extension LiveKitClaims on JWT {
-  LiveKitJwtPayload? get _liveKitPayload {
+/// Extension to extract WibeChat-specific claims from JWT tokens.
+extension WibeChatClaims on JWT {
+  WibeChatJwtPayload? get _wibeChatPayload {
     final claims = payload;
     if (claims is Map<String, dynamic>) {
-      return LiveKitJwtPayload.fromClaims(claims);
+      return WibeChatJwtPayload.fromClaims(claims);
     }
     if (claims is Map) {
-      return LiveKitJwtPayload.fromClaims(Map<String, dynamic>.from(claims));
+      return WibeChatJwtPayload.fromClaims(Map<String, dynamic>.from(claims));
     }
     return null;
   }
 
   /// The display name for the participant.
-  String? get name => _liveKitPayload?.name;
+  String? get name => _wibeChatPayload?.name;
 
   /// Custom metadata associated with the participant.
-  String? get metadata => _liveKitPayload?.metadata;
+  String? get metadata => _wibeChatPayload?.metadata;
 
   /// Custom attributes for the participant.
-  Map<String, String>? get attributes => _liveKitPayload?.attributes;
+  Map<String, String>? get attributes => _wibeChatPayload?.attributes;
 
   /// Video-specific grants embedded in the token.
-  LiveKitVideoGrant? get video => _liveKitPayload?.video;
+  WibeChatVideoGrant? get video => _wibeChatPayload?.video;
 }
 
 /// Validates whether the JWT token in the response is expired or invalid.

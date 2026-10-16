@@ -3,9 +3,9 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/audio/audio_frame_capture.dart';
-import 'package:livekit_client/src/audio/audio_pcm_utils.dart';
-import 'package:livekit_client/src/support/byte_ring_buffer.dart';
+import 'package:wibechat_client/src/audio/audio_frame_capture.dart';
+import 'package:wibechat_client/src/audio/audio_pcm_utils.dart';
+import 'package:wibechat_client/src/support/byte_ring_buffer.dart';
 
 /// A mock AudioFrameCapture that emits frames from a StreamController.
 class MockAudioFrameCapture implements AudioFrameCapture {

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:livekit_example/main.dart';
+import 'package:wibechat_example/main.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +9,7 @@ void main() {
   testWidgets('shows the connect screen', (tester) async {
     SharedPreferences.setMockInitialValues({});
 
-    await tester.pumpWidget(const LiveKitExampleApp());
+    await tester.pumpWidget(const WibeChatExampleApp());
     await tester.pumpAndSettle();
 
     expect(find.text('Flutter SDK example'), findsOneWidget);

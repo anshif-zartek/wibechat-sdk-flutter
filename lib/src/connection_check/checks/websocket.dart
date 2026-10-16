@@ -17,7 +17,7 @@ import '../../proto/livekit_rtc.pb.dart' as lk_rtc;
 import '../../support/region_url_provider.dart';
 import 'checker.dart';
 
-/// Verifies that a WebSocket connection to the LiveKit server can be
+/// Verifies that a WebSocket connection to the WibeChat server can be
 /// established (signal connection).
 class WebSocketCheck extends Checker {
   WebSocketCheck(super.url, super.token, {super.options, super.room});

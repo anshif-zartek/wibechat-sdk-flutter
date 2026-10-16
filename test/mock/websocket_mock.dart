@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:livekit_client/src/options.dart';
-import 'package:livekit_client/src/support/websocket.dart';
+import 'package:wibechat_client/src/options.dart';
+import 'package:wibechat_client/src/support/websocket.dart';
 
-class MockWebSocket extends LiveKitWebSocket {
+class MockWebSocket extends WibeChatWebSocket {
   @override
   void send(List<int> data) {}
 }
@@ -33,7 +33,7 @@ class MockWebSocketConnector {
 
   WebSocketOnError get onError => handlers!.onError!;
 
-  Future<LiveKitWebSocket> connect(
+  Future<WibeChatWebSocket> connect(
     Uri uri, {
     WebSocketEventHandlers? options,
     Map<String, String>? headers,

@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/// Base class for Exceptions thrown by the LiveKit SDK
-abstract class LiveKitException implements Exception {
+/// Base class for Exceptions thrown by the WibeChat SDK
+abstract class WibeChatException implements Exception {
   final String message;
-  const LiveKitException._(this.message);
+  const WibeChatException._(this.message);
 
   @override
-  String toString() => 'LiveKit Exception: [$runtimeType] $message';
+  String toString() => 'WibeChat Exception: [$runtimeType] $message';
 }
 
 enum ConnectionErrorReason {
@@ -32,7 +32,7 @@ enum ConnectionErrorReason {
 /// - Invalid token (make sure your token is generated correctly)
 /// - Network condition is not good
 /// - Server not set up correctly (not responding)
-class ConnectException extends LiveKitException {
+class ConnectException extends WibeChatException {
   final ConnectionErrorReason reason;
   final int statusCode;
   ConnectException(
@@ -47,12 +47,12 @@ class ConnectException extends LiveKitException {
 /// - Network condition is not good.
 /// - SFU deploy behind a NAT and not configured correctly.
 /// - Need a turn relay server but not configured.
-class MediaConnectException extends LiveKitException {
+class MediaConnectException extends WibeChatException {
   MediaConnectException([String msg = 'Ice connection failed']) : super._(msg);
 }
 
 /// Certificate pinning validation failed for an SDK-owned TLS connection.
-class CertificatePinningException extends LiveKitException {
+class CertificatePinningException extends WibeChatException {
   final String host;
   final String? presentedPin;
 
@@ -65,12 +65,12 @@ class CertificatePinningException extends LiveKitException {
 
 /// An internal state of the SDK is not correct and can not continue to execute.
 /// This should not occur frequently.
-class UnexpectedStateException extends LiveKitException {
+class UnexpectedStateException extends WibeChatException {
   UnexpectedStateException([String msg = 'Unexpected connection state']) : super._(msg);
 }
 
 /// Exception thrown when pc negotiation fails.
-class NegotiationError extends LiveKitException {
+class NegotiationError extends WibeChatException {
   NegotiationError([String msg = 'Negotiation Error']) : super._(msg);
 }
 
@@ -78,7 +78,7 @@ class NegotiationError extends LiveKitException {
 /// Common reasons:
 /// - Required permissions not yet granted to the platform.
 /// - Constraints(Capture options) rejected by the platform.
-class TrackCreateException extends LiveKitException {
+class TrackCreateException extends WibeChatException {
   TrackCreateException([String msg = 'Failed to create track']) : super._(msg);
 }
 
@@ -89,7 +89,7 @@ class TrackCreateException extends LiveKitException {
 /// - Recording was started while the app-managed audio session
 ///   (`AudioSessionManagementMode.manual`) has a category without input.
 /// - The system rejected the audio session configuration.
-class AudioSessionException extends LiveKitException {
+class AudioSessionException extends WibeChatException {
   AudioSessionException([String msg = 'Audio session error']) : super._(msg);
 }
 
@@ -97,7 +97,7 @@ class AudioSessionException extends LiveKitException {
 /// Common reasons:
 /// - Token does not have track publish permission.
 /// - Network condition is not good.
-class TrackPublishException extends LiveKitException {
+class TrackPublishException extends WibeChatException {
   TrackPublishException([String msg = 'Failed to publish track']) : super._(msg);
 }
 
@@ -105,23 +105,23 @@ class TrackPublishException extends LiveKitException {
 /// Common reasons:
 /// - Token does not have data publish permission.
 /// - Network condition is not good.
-class DataPublishException extends LiveKitException {
+class DataPublishException extends WibeChatException {
   DataPublishException([String msg = 'Failed to publish data']) : super._(msg);
 }
 
 /// A certain time has passed while attempting to execute an operation.
-class TimeoutException extends LiveKitException {
+class TimeoutException extends WibeChatException {
   TimeoutException([String msg = 'Timeout']) : super._(msg);
 }
 
 /// An exception for End to End Encryption.
-class LiveKitE2EEException extends LiveKitException {
-  LiveKitE2EEException([String msg = 'E2EE error']) : super._(msg);
+class WibeChatE2EEException extends WibeChatException {
+  WibeChatE2EEException([String msg = 'E2EE error']) : super._(msg);
 
   @override
   String toString() => 'E2EE Exception: [$runtimeType] $message';
 }
 
-class UnexpectedConnectionState extends LiveKitException {
+class UnexpectedConnectionState extends WibeChatException {
   UnexpectedConnectionState([String msg = 'Unexpected connection state']) : super._(msg);
 }

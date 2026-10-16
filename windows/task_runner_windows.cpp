@@ -7,12 +7,12 @@
 #include <algorithm>
 #include <iostream>
 
-namespace livekit_client_plugin {
+namespace wibechat_client_plugin {
 
 TaskRunnerWindows::TaskRunnerWindows() {
   WNDCLASS window_class = RegisterWindowClass();
   window_handle_ =
-      CreateWindowEx(0, window_class.lpszClassName, L"livekit", 0, 0, 0, 0, 0,
+      CreateWindowEx(0, window_class.lpszClassName, L"wibechat", 0, 0, 0, 0, 0,
                      HWND_MESSAGE, nullptr, window_class.hInstance, nullptr);
 
   if (window_handle_) {
@@ -65,7 +65,7 @@ void TaskRunnerWindows::ProcessTasks() {
 }
 
 WNDCLASS TaskRunnerWindows::RegisterWindowClass() {
-  window_class_name_ = L"LiveKitWindowsTaskRunnerWindow";
+  window_class_name_ = L"WibeChatWindowsTaskRunnerWindow";
 
   WNDCLASS window_class{};
   window_class.hCursor = nullptr;
@@ -104,4 +104,4 @@ LRESULT TaskRunnerWindows::WndProc(HWND const window, UINT const message,
   }
 }
 
-} // namespace livekit_client_plugin
+} // namespace wibechat_client_plugin

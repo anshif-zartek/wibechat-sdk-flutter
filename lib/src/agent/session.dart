@@ -37,7 +37,7 @@ import 'chat/transcription_stream_receiver.dart';
 import 'room_agent.dart';
 import 'session_options.dart';
 
-/// A [Session] represents a connection to a LiveKit Room that can contain an agent.
+/// A [Session] represents a connection to a WibeChat Room that can contain an agent.
 ///
 /// A session encapsulates the lifecycle of connecting to a room, dispatching an
 /// agent, and relaying messages between the user and the agent. It exposes
@@ -180,7 +180,7 @@ class Session extends DisposableChangeNotifier {
   ///
   /// Requires that encryption was configured via [SessionOptions] (by passing
   /// `encryption:`) or that the [Room] was created with [E2EEOptions].
-  /// Throws [LiveKitE2EEException] if encryption was not configured.
+  /// Throws [WibeChatE2EEException] if encryption was not configured.
   Future<void> setEncryptionEnabled(bool enabled) => room.setE2EEEnabled(enabled);
 
   /// Starts the session by fetching credentials and connecting to the room.

@@ -21,8 +21,8 @@ import 'package:web/web.dart' as web;
 // ignore: implementation_imports
 import 'package:dart_webrtc/src/media_stream_track_impl.dart'; // import_sorter: keep
 
-const audioContainerId = 'livekit_audio_container';
-const audioPrefix = 'livekit_audio_';
+const audioContainerId = 'wibechat_audio_container';
+const audioPrefix = 'wibechat_audio_';
 
 web.AudioContext _audioContext = web.AudioContext();
 Map<String, web.Element> _audioElements = {};

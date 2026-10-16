@@ -2,7 +2,7 @@
 
 #include <glib.h>
 
-namespace livekit_client_plugin {
+namespace wibechat_client_plugin {
 
 void TaskRunnerLinux::EnqueueTask(TaskClosure task) {
   {
@@ -53,4 +53,4 @@ void TaskRunnerLinux::EnqueueTask(TaskClosure task) {
   }
 }
 
-}  // namespace livekit_client_plugin
+}  // namespace wibechat_client_plugin

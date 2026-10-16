@@ -24,9 +24,9 @@ import '../track/remote/video.dart';
 import '../types/other.dart';
 import 'constants.dart';
 
-/// Represents a LiveKit Agent.
+/// Represents a WibeChat Agent.
 ///
-/// The [Agent] class models the state of a LiveKit agent within a [Session].
+/// The [Agent] class models the state of a WibeChat agent within a [Session].
 /// It exposes information about the agent's connection status, conversational
 /// state, and the media tracks that belong to the agent. Consumers should
 /// observe [Agent] to update their UI when the agent connects, disconnects,

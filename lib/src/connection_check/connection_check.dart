@@ -25,7 +25,7 @@ import 'checks/webrtc.dart';
 import 'checks/websocket.dart';
 import 'events.dart';
 
-/// Utility to diagnose connection issues with a LiveKit server, a Dart port
+/// Utility to diagnose connection issues with a WibeChat server, a Dart port
 /// of the `ConnectionCheck` helper from client-sdk-js.
 ///
 /// Run it proactively (e.g. at app start) or reactively when connecting to a
@@ -64,7 +64,7 @@ class ConnectionCheck extends Disposable with EventsEmittable<ConnectionCheckEve
     });
   }
 
-  /// URL of the LiveKit server to run the checks against.
+  /// URL of the WibeChat server to run the checks against.
   final String url;
 
   /// Access token used for the checks.

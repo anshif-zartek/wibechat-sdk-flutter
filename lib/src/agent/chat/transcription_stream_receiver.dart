@@ -23,7 +23,7 @@ import '../../types/data_stream.dart';
 import 'message.dart';
 import 'message_receiver.dart';
 
-/// Converts LiveKit transcription text streams into [ReceivedMessage]s.
+/// Converts WibeChat transcription text streams into [ReceivedMessage]s.
 ///
 /// This receiver is intended for agent-powered transcription streams produced by
 /// the LiveKit Agents framework (text streams require `livekit-agents >= 1.0.0`).

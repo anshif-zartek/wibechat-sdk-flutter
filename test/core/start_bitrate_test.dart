@@ -19,12 +19,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 import 'package:sdp_transform/sdp_transform.dart' as sdp_transform;
 
-import 'package:livekit_client/src/options.dart' show ConnectOptions, VideoPublishOptions;
-import 'package:livekit_client/src/utils.dart' show computeStartTargetBitrate;
+import 'package:wibechat_client/src/options.dart' show ConnectOptions, VideoPublishOptions;
+import 'package:wibechat_client/src/utils.dart' show computeStartTargetBitrate;
 import '../mock/e2e_container.dart';
 import '../mock/peerconnection_mock.dart';
 
-import 'package:livekit_client/src/core/transport.dart'
+import 'package:wibechat_client/src/core/transport.dart'
     show
         TrackBitrateInfo,
         Transport,

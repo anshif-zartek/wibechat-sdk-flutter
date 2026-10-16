@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/support/byte_ring_buffer.dart';
+import 'package:wibechat_client/src/support/byte_ring_buffer.dart';
 
 void main() {
   group('ByteRingBuffer', () {

@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 import '../exts.dart';
 import '../theme.dart';
@@ -588,7 +588,7 @@ class _RoomHeader extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  room.name ?? 'LiveKit Room',
+                  room.name ?? 'WibeChat Room',
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(
                     context,

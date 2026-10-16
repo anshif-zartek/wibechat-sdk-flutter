@@ -14,11 +14,11 @@
 
 import 'endpoint.dart';
 
-/// A token source that queries LiveKit's development token server for development and testing.
+/// A token source that queries WibeChat's development token server for development and testing.
 ///
 /// This token source connects to LiveKit Cloud's
 /// [development token server](https://docs.livekit.io/frontends/build/authentication/sandbox-token-server/),
-/// which is perfect for quick prototyping and getting started with LiveKit development.
+/// which is perfect for quick prototyping and getting started with WibeChat development.
 ///
 /// **Warning:** This token source is **insecure** and should **never** be used in production.
 ///
@@ -37,7 +37,7 @@ class DevelopmentTokenSource extends EndpointTokenSource {
        );
 }
 
-/// A token source that queries LiveKit's sandbox token server for development and testing.
+/// A token source that queries WibeChat's sandbox token server for development and testing.
 @Deprecated('Use DevelopmentTokenSource instead')
 class SandboxTokenSource extends DevelopmentTokenSource {
   /// Initialize with a sandbox ID from LiveKit Cloud.

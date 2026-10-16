@@ -14,10 +14,10 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/publication/track_settings.dart';
-import 'package:livekit_client/src/types/other.dart';
-import 'package:livekit_client/src/types/video_dimensions.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/publication/track_settings.dart';
+import 'package:wibechat_client/src/types/other.dart';
+import 'package:wibechat_client/src/types/video_dimensions.dart';
 
 /// Test helper: returns layer dimensions for a standard 3-layer SVC/simulcast track.
 VideoDimensions? _testLayerDimensions(VideoQuality quality) {

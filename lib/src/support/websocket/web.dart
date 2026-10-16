@@ -25,20 +25,20 @@ import '../websocket.dart';
 
 // ignore: avoid_web_libraries_in_flutter
 
-Future<LiveKitWebSocketWeb> lkWebSocketConnect(
+Future<WibeChatWebSocketWeb> lkWebSocketConnect(
   Uri uri, {
   WebSocketEventHandlers? options,
   Map<String, String>? headers, // |headers| will be ignored on web
   NetworkOptions? networkOptions = const NetworkOptions(),
-}) => LiveKitWebSocketWeb.connect(uri, options: options, networkOptions: networkOptions);
+}) => WibeChatWebSocketWeb.connect(uri, options: options, networkOptions: networkOptions);
 
-class LiveKitWebSocketWeb extends LiveKitWebSocket {
+class WibeChatWebSocketWeb extends WibeChatWebSocket {
   final web.WebSocket _ws;
   final WebSocketEventHandlers? options;
   late final StreamSubscription _messageSubscription;
   late final StreamSubscription _closeSubscription;
 
-  LiveKitWebSocketWeb._(
+  WibeChatWebSocketWeb._(
     this._ws, [
     this.options,
     Map<String, String>? headers, // ignore: unused_element_parameter
@@ -72,7 +72,7 @@ class LiveKitWebSocketWeb extends LiveKitWebSocket {
     _ws.send(Uint8List.fromList(data).toJS);
   }
 
-  static Future<LiveKitWebSocketWeb> connect(
+  static Future<WibeChatWebSocketWeb> connect(
     Uri uri, {
     WebSocketEventHandlers? options,
     NetworkOptions? networkOptions = const NetworkOptions(),
@@ -81,9 +81,9 @@ class LiveKitWebSocketWeb extends LiveKitWebSocket {
       throw UnsupportedError('Certificate pinning is not supported on Flutter web');
     }
 
-    final completer = Completer<LiveKitWebSocketWeb>();
+    final completer = Completer<WibeChatWebSocketWeb>();
     final ws = web.WebSocket(uri.toString());
-    ws.onOpen.listen((_) => completer.complete(LiveKitWebSocketWeb._(ws, options)));
+    ws.onOpen.listen((_) => completer.complete(WibeChatWebSocketWeb._(ws, options)));
     ws.onError.listen((e) => completer.completeError(WebSocketException('Failed to connect', e)));
     return completer.future;
   }

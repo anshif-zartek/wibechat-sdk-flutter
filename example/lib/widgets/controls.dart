@@ -5,7 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
@@ -174,10 +174,10 @@ class _ControlsWidgetState extends State<ControlsWidget> {
           if (!isRetry) {
             const androidConfig = FlutterBackgroundAndroidConfig(
               notificationTitle: 'Screen Sharing',
-              notificationText: 'LiveKit Example is sharing the screen.',
+              notificationText: 'WibeChat Example is sharing the screen.',
               notificationImportance: AndroidNotificationImportance.normal,
               notificationIcon: AndroidResource(
-                name: 'livekit_ic_launcher',
+                name: 'wibechat_ic_launcher',
                 defType: 'mipmap',
               ),
             );

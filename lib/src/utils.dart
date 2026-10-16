@@ -28,7 +28,6 @@ import 'package:meta/meta.dart';
 import './proto/livekit_models.pb.dart' as lk_models;
 import './support/native.dart';
 import 'extensions.dart';
-import 'livekit.dart';
 import 'logger.dart';
 import 'options.dart';
 import 'support/platform.dart';
@@ -38,6 +37,7 @@ import 'types/priority.dart';
 import 'types/video_dimensions.dart';
 import 'types/video_encoding.dart';
 import 'types/video_parameters.dart';
+import 'wibechat.dart';
 
 extension UriExt on Uri {
   @internal
@@ -180,7 +180,7 @@ class Utils {
 
     final pathSegments = List<String>.from(uri.pathSegments);
 
-    // strip path segment used for LiveKit if already exists
+    // strip path segment used for WibeChat if already exists
     pathSegments.removeWhere((e) => e.isEmpty);
     pathSegments.addAll(lastSegments);
 
@@ -200,7 +200,7 @@ class Utils {
         'protocol': connectOptions.protocolVersion.toStringValue(),
         'client_protocol': connectOptions.clientProtocolVersion.toStringValue(),
         'sdk': 'flutter',
-        'version': LiveKitClient.version,
+        'version': WibeChatClient.version,
         'network': networkType,
         // client info
         if (clientInfo != null) ...{

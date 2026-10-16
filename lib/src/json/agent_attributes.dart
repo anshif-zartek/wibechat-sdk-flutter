@@ -78,7 +78,7 @@ enum AgentState {
 class TranscriptionAttributes {
   /// Schema for transcription-related text stream attributes.
   ///
-  /// These attributes are attached to LiveKit text streams used for agent and
+  /// These attributes are attached to WibeChat text streams used for agent and
   /// user transcriptions (typically on the `'lk.transcription'` topic).
   ///
   /// - Note: Some agent implementations may encode `lk.transcription_final` as a

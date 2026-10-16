@@ -64,7 +64,7 @@ public class Visualizer: NSObject, RTCAudioRenderer, FlutterStreamHandler {
         _track = track
         super.init()
         _track?.add(audioRenderer: self)
-        let channelName = "io.livekit.audio.visualizer/eventChannel-" + (track?.mediaTrack.trackId ?? "") + "-" + visualizerId
+        let channelName = "io.wibechat.audio.visualizer/eventChannel-" + (track?.mediaTrack.trackId ?? "") + "-" + visualizerId
         channel = FlutterEventChannel(name: channelName, binaryMessenger: binaryMessenger)
         channel?.setStreamHandler(self)
     }

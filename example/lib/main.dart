@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_example/theme.dart';
+import 'package:wibechat_client/wibechat_client.dart';
+import 'package:wibechat_example/theme.dart';
 import 'package:logging/logging.dart';
 import 'package:intl/intl.dart';
 import 'pages/connect.dart';
@@ -24,26 +24,26 @@ void main() async {
   /// for livestreaming app, you can initialize the bypassVoiceProcessing = true
   /// here to get better audio quality
   ///
-  /// await LiveKitClient.initialize(
+  /// await WibeChatClient.initialize(
   ///  bypassVoiceProcessing: lkPlatformIsMobile(),
   /// );
-  await LiveKitClient.initialize(
+  await WibeChatClient.initialize(
     zeroPlayoutDelay: true,
     enableWARP: true,
   );
-  runApp(const LiveKitExampleApp());
+  runApp(const WibeChatExampleApp());
 }
 
-class LiveKitExampleApp extends StatelessWidget {
+class WibeChatExampleApp extends StatelessWidget {
   //
-  const LiveKitExampleApp({
+  const WibeChatExampleApp({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'LiveKit Flutter Example',
-        theme: LiveKitTheme().buildThemeData(context),
+        title: 'WibeChat Flutter Example',
+        theme: WibeChatTheme().buildThemeData(context),
         home: const ConnectPage(),
       );
 }

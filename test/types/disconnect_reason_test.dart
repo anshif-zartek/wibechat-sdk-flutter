@@ -14,9 +14,9 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/extensions.dart';
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/types/other.dart';
+import 'package:wibechat_client/src/extensions.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/types/other.dart';
 
 void main() {
   group('DisconnectReason.toSDKType', () {

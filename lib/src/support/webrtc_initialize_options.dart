@@ -18,7 +18,7 @@ import '../audio/android_audio_session_adapter.dart';
 import '../audio/audio_session.dart';
 
 @internal
-Map<String, dynamic> liveKitWebRTCInitializeOptions({
+Map<String, dynamic> wibeChatWebRTCInitializeOptions({
   required bool bypassVoiceProcessing,
   required AudioSessionOptions? initialAudioSessionOptions,
   required bool includeAndroidAudioConfiguration,

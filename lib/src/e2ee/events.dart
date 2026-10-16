@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import '../../livekit_client.dart';
+import '../../wibechat_client.dart';
 
 enum E2EEState {
   kNew,

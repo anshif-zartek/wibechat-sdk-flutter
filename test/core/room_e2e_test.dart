@@ -21,8 +21,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart' as rtc;
 import 'package:logging/logging.dart';
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/internal/events.dart';
+import 'package:wibechat_client/src/internal/events.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 import '../mock/e2e_container.dart';
 import '../mock/test_data.dart';
 import '../mock/websocket_mock.dart';

@@ -22,19 +22,19 @@ import '../../options.dart';
 import '../http_client/io.dart';
 import '../websocket.dart';
 
-Future<LiveKitWebSocketIO> lkWebSocketConnect(
+Future<WibeChatWebSocketIO> lkWebSocketConnect(
   Uri uri, {
   WebSocketEventHandlers? options,
   Map<String, String>? headers,
   NetworkOptions? networkOptions = const NetworkOptions(),
-}) => LiveKitWebSocketIO.connect(uri, options: options, headers: headers, networkOptions: networkOptions);
+}) => WibeChatWebSocketIO.connect(uri, options: options, headers: headers, networkOptions: networkOptions);
 
-class LiveKitWebSocketIO extends LiveKitWebSocket {
+class WibeChatWebSocketIO extends WibeChatWebSocket {
   final io.WebSocket _ws;
   final WebSocketEventHandlers? options;
   late final StreamSubscription _subscription;
 
-  LiveKitWebSocketIO._(
+  WibeChatWebSocketIO._(
     this._ws, [
     this.options,
   ]) {
@@ -73,7 +73,7 @@ class LiveKitWebSocketIO extends LiveKitWebSocket {
     }
   }
 
-  static Future<LiveKitWebSocketIO> connect(
+  static Future<WibeChatWebSocketIO> connect(
     Uri uri, {
     WebSocketEventHandlers? options,
     Map<String, String>? headers,
@@ -86,7 +86,7 @@ class LiveKitWebSocketIO extends LiveKitWebSocket {
     try {
       final ws = await io.WebSocket.connect(uri.toString(), headers: headers, customClient: customClient);
       logger.fine('[WebSocketIO] Connected');
-      return LiveKitWebSocketIO._(ws, options);
+      return WibeChatWebSocketIO._(ws, options);
     } on CertificatePinningException {
       rethrow;
     } catch (err) {

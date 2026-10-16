@@ -16,14 +16,14 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/livekit_client.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 
 void main() {
   test('loads PEM certificate bytes from an asset by default', () async {
     final certificate = await CertificateBytes.fromAsset(
-      'assets/livekit_leaf_cert.pem',
+      'assets/wibechat_leaf_cert.pem',
       bundle: _FakeAssetBundle({
-        'assets/livekit_leaf_cert.pem': [1, 2, 3],
+        'assets/wibechat_leaf_cert.pem': [1, 2, 3],
       }),
     );
 
@@ -33,9 +33,9 @@ void main() {
 
   test('loads DER certificate bytes from an asset when requested', () async {
     final certificate = await CertificateBytes.fromAsset(
-      'assets/livekit_leaf_cert.der',
+      'assets/wibechat_leaf_cert.der',
       bundle: _FakeAssetBundle({
-        'assets/livekit_leaf_cert.der': [4, 5, 6],
+        'assets/wibechat_leaf_cert.der': [4, 5, 6],
       }),
       encoding: CertificateBytesEncoding.der,
     );

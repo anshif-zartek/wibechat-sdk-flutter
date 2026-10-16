@@ -17,7 +17,7 @@
 // not be lost when a later request replaces it.
 //
 // The first test ports rust-sdks' `test_resume_escalation_sticks_across_cycles`
-// (livekit/tests/peer_connection_signaling_test.rs). That test needs a live SFU,
+// (wibechat/tests/peer_connection_signaling_test.rs). That test needs a live SFU,
 // two participants and a published sine track, and observes the escalation via
 // `LocalTrackRepublished` because only the full-reconnect path republishes.
 // Here the mock transport lets us inject the concurrent request directly and
@@ -31,10 +31,10 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/livekit_client.dart';
-import 'package:livekit_client/src/proto/livekit_models.pb.dart' as lk_models;
-import 'package:livekit_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
-import 'package:livekit_client/src/types/internal.dart';
+import 'package:wibechat_client/src/proto/livekit_models.pb.dart' as lk_models;
+import 'package:wibechat_client/src/proto/livekit_rtc.pb.dart' as lk_rtc;
+import 'package:wibechat_client/src/types/internal.dart';
+import 'package:wibechat_client/wibechat_client.dart';
 import '../mock/e2e_container.dart';
 import '../mock/peerconnection_mock.dart';
 import '../mock/websocket_mock.dart';

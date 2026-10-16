@@ -61,7 +61,7 @@ abstract class Participant<T extends TrackPublication> extends DisposableChangeN
   String get name => _name;
   String _name;
 
-  /// Client-assigned metadata, opaque to livekit.
+  /// Client-assigned metadata, opaque to wibechat.
   String? metadata;
 
   /// kind of [Participant]

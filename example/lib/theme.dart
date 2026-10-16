@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 // https://github.com/flutter/flutter/issues/39113
 
 extension LKColors on Colors {
-  // LiveKit brand accents.
+  // WibeChat brand accents.
   static const lkAccent = Color(0xFF002CF2);
   static const lkAccentDark = Color(0xFF1FD5F9);
 
@@ -55,7 +55,7 @@ extension LKColors on Colors {
   static const textSecondary = mutedFgDark;
 }
 
-class LiveKitTheme {
+class WibeChatTheme {
   final bgColor = LKColors.bgDark;
   final textColor = LKColors.fgDark;
   final cardColor = LKColors.cardDark;

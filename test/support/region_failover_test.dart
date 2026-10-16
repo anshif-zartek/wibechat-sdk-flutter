@@ -14,9 +14,9 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:livekit_client/src/exceptions.dart';
-import 'package:livekit_client/src/support/region_url_provider.dart';
-import 'package:livekit_client/src/support/websocket.dart' show WebSocketException;
+import 'package:wibechat_client/src/exceptions.dart';
+import 'package:wibechat_client/src/support/region_url_provider.dart';
+import 'package:wibechat_client/src/support/websocket.dart' show WebSocketException;
 
 void main() {
   group('canFailOverToAnotherRegion', () {

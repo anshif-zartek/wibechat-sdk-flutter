@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:livekit_client/src/connection_check/checks/checker.dart';
+import 'package:wibechat_client/src/connection_check/checks/checker.dart';
 
 /// A [Checker] with injectable behavior, to test the [Checker] base class and
 /// `ConnectionCheck` orchestration without a server.

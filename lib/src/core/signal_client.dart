@@ -43,7 +43,7 @@ class SignalClient extends Disposable with EventsEmittable<SignalEvent> {
   ConnectionState get connectionState => _connectionState;
 
   final WebSocketConnector _wsConnector;
-  LiveKitWebSocket? _ws;
+  WibeChatWebSocket? _ws;
 
   final _queue = Queue<lk_rtc.SignalRequest>();
   Duration? _pingTimeoutDuration;

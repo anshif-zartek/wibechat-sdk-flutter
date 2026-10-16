@@ -49,7 +49,7 @@ public class AudioRenderer: NSObject {
         super.init()
         _track?.add(audioRenderer: self)
 
-        let channelName = "io.livekit.audio.renderer/channel-" + rendererId
+        let channelName = "io.wibechat.audio.renderer/channel-" + rendererId
         channel = FlutterEventChannel(name: channelName, binaryMessenger: binaryMessenger)
         channel?.setStreamHandler(self)
     }
